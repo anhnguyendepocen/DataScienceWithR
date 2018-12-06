@@ -1,4 +1,14 @@
-Minstress Better Starting Configuration For Non-Metric MDS
+---
+title: "``Minstress``: Better Starting Configuration For Non-Metric MDS"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(analytics)
+```
+
+
 
 #### Description
 Minstress is a heuristic to find better non-metric MDS solutions, by finding better starting configurations, instead of just using a random one.

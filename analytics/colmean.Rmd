@@ -1,4 +1,13 @@
-## ``colmean``: Give Row Means of a Matrix-like Object, Based on a Grouping Variable
+---
+title: "``colmean``: Give Row Means of a Matrix-like Object, Based on a Grouping Variable"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(analytics)
+```
+
 
 #### Description
 Compute Row (weighted) means across columns of a numeric matrix-like object for each level of a grouping variable.

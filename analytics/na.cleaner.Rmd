@@ -1,4 +1,12 @@
-## na.cleaner Missing Value Imputation
+---
+title: "``na.cleaner ``:  Missing Value Imputation"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(analytics)
+```
 
 #### Description
 

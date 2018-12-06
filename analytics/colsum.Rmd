@@ -1,3 +1,13 @@
+---
+title: "``colsum ``: Give Row sums of a Matrix-like Object, Based on a Grouping Variable"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(analytics)
+```
+
 ## colsum Give Row sums of a Matrix-like Object, Based on a Grouping Variable
 
 #### Description

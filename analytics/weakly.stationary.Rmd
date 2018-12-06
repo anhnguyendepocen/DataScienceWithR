@@ -1,4 +1,13 @@
-##  weakly.stationary Testing for Weak Stationarity in a Time Series
+---
+title: "``weakly.stationary``: Testing for Weak Stationarity in a Time Series"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(analytics)
+```
+
 
 #### Description
 Performs a series of statistical tests aimed at detecting non-stationarity.
