@@ -3,10 +3,7 @@ repCV Cross-validation for linear models
 
 #### Description 
 
-Estimate the prediction error of a linear model via (repeated) K-fold cross-validation. Crossvalidation
-functions are available for least squares fits computed with lm as well as for the following
-robust alternatives: MM-type models computed with lmrob and least trimmed squares fits
-computed with ltsReg.
+Estimate the prediction error of a linear model via (repeated) K-fold cross-validation. Crossvalidation functions are available for least squares fits computed with lm as well as for the following robust alternatives: MM-type models computed with lmrob and least trimmed squares fits computed with ltsReg.
 
 #### Usage 
 <pre><code>
@@ -24,7 +21,6 @@ folds = NULL, seed = NULL, ...)
 ## S3 method for class 'lts'
 repCV(object, cost = rtmspe, K = 5, R = 1,
 foldType = c("random", "consecutive", "interleaved"),
-repCV 33
 folds = NULL, fit = c("reweighted", "raw", "both"),
 seed = NULL, ...)
 cvLm(object, cost = rmspe, K = 5, R = 1,
@@ -42,35 +38,45 @@ seed = NULL, ...)
 #### Arguments 
 
 object an object returned from a model fitting function. Methods are implemented for
-objects of class "lm" computed with lm, objects of class "lmrob" computed
-with lmrob, and object of class "lts" computed with ltsReg.
+objects of class "lm" computed with lm, objects of class "lmrob" computed with lmrob, and object of class "lts" computed with ltsReg.
 cost a cost function measuring prediction loss. It should expect the observed values
-of the response to be passed as the first argument and the predicted values as the
-second argument, and must return either a non-negative scalar value, or a list
-with the first component containing the prediction error and the second component
-containing the standard error. The default is to use the root mean squared
-prediction error for the "lm" method and the root trimmed mean squared prediction
+of the response to be passed as the first argument and the predicted values as the second argument, and must return either a non-negative scalar value, or a list with the first component containing the prediction error and the second component
+containing the standard error. The default is to use the root mean squared prediction error for the "lm" method and the root trimmed mean squared prediction
 error for the "lmrob" and "lts" methods (see cost).
-K an integer giving the number of groups into which the data should be split (the
-default is five). Keep in mind that this should be chosen such that all groups
-are of approximately equal size. Setting K equal to n yields leave-one-out crossvalidation.
+K an integer giving the number of groups into which the data should be split (the default is five). Keep in mind that this should be chosen such that all groups are of approximately equal size. Setting K equal to n yields leave-one-out crossvalidation.
 R an integer giving the number of replications for repeatedK-fold cross-validation.
-This is ignored for for leave-one-out cross-validation and other non-random
-splits of the data.
+This is ignored for for leave-one-out cross-validation and other non-random splits of the data.
 foldType a character string specifying the type of folds to be generated. Possible values
 are "random" (the default), "consecutive" or "interleaved".
-folds an object of class "cvFolds" giving the folds of the data for cross-validation (as
-returned by cvFolds). If supplied, this is preferred over K and R.
-fit a character string specifying for which fit to estimate the prediction error. Possible
-values are "reweighted" (the default) for the prediction error of the reweighted
-fit, "raw" for the prediction error of the raw fit, or "both" for the prediction error
+folds an object of class "cvFolds" giving the folds of the data for cross-validation (as returned by cvFolds). If supplied, this is preferred over K and R.
+fit a character string specifying for which fit to estimate the prediction error. Possible values are "reweighted" (the default) for the prediction error of the reweighted fit, "raw" for the prediction error of the raw fit, or "both" for the prediction error
 of both fits.
 seed optional initial seed for the random number generator (see .Random.seed).
-... additional 
-</code></pre>
-#### Arguments 
+... additional Arguments 
  to be passed to the prediction loss function cost.
-34 repCV
+
+#### Examples 
+```{r}
+
+library("robustbase")
+data("coleman")
+set.seed(1234) # set seed for reproducibility
+# set up folds for cross-validation
+folds <- cvFolds(nrow(coleman), K = 5, R = 10)
+# perform cross-validation for an LS regression model
+fitLm <- lm(Y ~ ., data = coleman)
+repCV(fitLm, cost = rtmspe, folds = folds, trim = 0.1)
+# perform cross-validation for an MM regression model
+fitLmrob <- lmrob(Y ~ ., data = coleman)
+repCV(fitLmrob, cost = rtmspe, folds = folds, trim = 0.1)
+# perform cross-validation for an LTS regression model
+fitLts <- ltsReg(Y ~ ., data = coleman)
+repCV(fitLts, cost = rtmspe, folds = folds, trim = 0.1)
+repCV(fitLts, cost = rtmspe, folds = folds,
+fit = "both", trim = 0.1)
+
+
+
 
 #### Details 
 
@@ -109,23 +115,3 @@ Andreas Alfons
 See Also
 cvFit, cvFolds, cost, lm, lmrob, ltsReg
 subset.cv 35
-
-#### Examples 
-```{r}
-
-library("robustbase")
-data("coleman")
-set.seed(1234) # set seed for reproducibility
-# set up folds for cross-validation
-folds <- cvFolds(nrow(coleman), K = 5, R = 10)
-# perform cross-validation for an LS regression model
-fitLm <- lm(Y ~ ., data = coleman)
-repCV(fitLm, cost = rtmspe, folds = folds, trim = 0.1)
-# perform cross-validation for an MM regression model
-fitLmrob <- lmrob(Y ~ ., data = coleman)
-repCV(fitLmrob, cost = rtmspe, folds = folds, trim = 0.1)
-# perform cross-validation for an LTS regression model
-fitLts <- ltsReg(Y ~ ., data = coleman)
-repCV(fitLts, cost = rtmspe, folds = folds, trim = 0.1)
-repCV(fitLts, cost = rtmspe, folds = folds,
-fit = "both", trim = 0.1)
