@@ -20,9 +20,7 @@ foldType = c("random", "consecutive", "interleaved"),
 folds = NULL, seed = NULL, ...)
 ## S3 method for class 'lts'
 repCV(object, cost = rtmspe, K = 5, R = 1,
-foldType = c("random", "consecutive", "interleaved"),
-folds = NULL, fit = c("reweighted", "raw", "both"),
-seed = NULL, ...)
+foldType = c("random", "consecutive", "interleaved"), folds = NULL, fit = c("reweighted", "raw", "both"), seed = NULL, ...)
 cvLm(object, cost = rmspe, K = 5, R = 1,
 foldType = c("random", "consecutive", "interleaved"),
 folds = NULL, seed = NULL, ...)
@@ -35,25 +33,21 @@ folds = NULL, fit = c("reweighted", "raw", "both"),
 seed = NULL, ...)
 
 </code></pre>
+
 #### Arguments 
 
-object an object returned from a model fitting function. Methods are implemented for
-objects of class "lm" computed with lm, objects of class "lmrob" computed with lmrob, and object of class "lts" computed with ltsReg.
-cost a cost function measuring prediction loss. It should expect the observed values
-of the response to be passed as the first argument and the predicted values as the second argument, and must return either a non-negative scalar value, or a list with the first component containing the prediction error and the second component
-containing the standard error. The default is to use the root mean squared prediction error for the "lm" method and the root trimmed mean squared prediction
+* object an object returned from a model fitting function. Methods are implemented for objects of class "lm" computed with lm, objects of class "lmrob" computed with lmrob, and object of class "lts" computed with ltsReg.
+* cost a cost function measuring prediction loss. It should expect the observed values of the response to be passed as the first argument and the predicted values as the second argument, and must return either a non-negative scalar value, or a list with the first component containing the prediction error and the second component containing the standard error. The default is to use the root mean squared prediction error for the "lm" method and the root trimmed mean squared prediction
 error for the "lmrob" and "lts" methods (see cost).
-K an integer giving the number of groups into which the data should be split (the default is five). Keep in mind that this should be chosen such that all groups are of approximately equal size. Setting K equal to n yields leave-one-out crossvalidation.
-R an integer giving the number of replications for repeatedK-fold cross-validation.
+* K an integer giving the number of groups into which the data should be split (the default is five). Keep in mind that this should be chosen such that all groups are of approximately equal size. Setting K equal to n yields leave-one-out crossvalidation.
+* R an integer giving the number of replications for repeatedK-fold cross-validation.
 This is ignored for for leave-one-out cross-validation and other non-random splits of the data.
-foldType a character string specifying the type of folds to be generated. Possible values
-are "random" (the default), "consecutive" or "interleaved".
-folds an object of class "cvFolds" giving the folds of the data for cross-validation (as returned by cvFolds). If supplied, this is preferred over K and R.
-fit a character string specifying for which fit to estimate the prediction error. Possible values are "reweighted" (the default) for the prediction error of the reweighted fit, "raw" for the prediction error of the raw fit, or "both" for the prediction error
+* foldType a character string specifying the type of folds to be generated. Possible values are "random" (the default), "consecutive" or "interleaved".
+* folds an object of class "cvFolds" giving the folds of the data for cross-validation (as returned by cvFolds). If supplied, this is preferred over K and R.
+* fit a character string specifying for which fit to estimate the prediction error. Possible values are "reweighted" (the default) for the prediction error of the reweighted fit, "raw" for the prediction error of the raw fit, or "both" for the prediction error
 of both fits.
-seed optional initial seed for the random number generator (see .Random.seed).
-... additional Arguments 
- to be passed to the prediction loss function cost.
+* seed optional initial seed for the random number generator (see .Random.seed).
+* ... additional arguments to be passed to the prediction loss function cost.
 
 #### Examples 
 ```{r}
@@ -74,7 +68,7 @@ fitLts <- ltsReg(Y ~ ., data = coleman)
 repCV(fitLts, cost = rtmspe, folds = folds, trim = 0.1)
 repCV(fitLts, cost = rtmspe, folds = folds,
 fit = "both", trim = 0.1)
-
+```
 
 
 
