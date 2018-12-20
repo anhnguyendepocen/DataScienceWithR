@@ -61,6 +61,9 @@ library("robustbase")
 data("coleman")
 ## evaluate MM regression models tuned for 85% and 95% efficiency
 tuning <- list(tuning.psi = c(3.443689, 4.685061))
+```
+
+```{r}
 ## via model fitting function
 # perform cross-validation
 # note that the response is extracted from 'data' in
@@ -71,11 +74,17 @@ seed = 1234)
 ## via function call
 # set up function call
 call <- call("lmrob", formula = Y ~ .)
+```
+
+```{r}
 # perform cross-validation
 cvTuning(call, data = coleman, y = coleman$Y, tuning = tuning,
 26 densityplot.cv
 cost = rtmspe, K = 5, R = 10, costArgs = list(trim = 0.1),
 seed = 1234)
+
+```
+
 
 
 #### Details 
@@ -88,10 +97,9 @@ The response variable and the obtained predictions for all observations are then
 loss function cost to estimate the prediction error. For repeated cross-validation, this process
 is replicated and the estimated prediction errors from all replications as well as their average are
 included in the returned object.
-Furthermore, if the response is a vector but the predict method of the fitted models returns a
-matrix, the prediction error is computed for each column. A typical use case for this behavior would
-be if the predict method returns predictions from an initial model fit and stepwise improvements
-thereof.
+
+Furthermore, if the response is a vector but the predict method of the fitted models returns a matrix, the prediction error is computed for each column. A typical use case for this behavior would be if the predict method returns predictions from an initial model fit and stepwise improvements thereof.
+
 If formula or data are supplied, all variables required for fitting the models are added as one argument
 to the function call, which is the typical behavior of model fitting functions with a formula
 interface. In this case, the accepted values for names depend on the method. For the function method, a character vector of length two should supplied, with the first element specifying the argument name for the formula and the second element specifying the argument name for the data (the default is to use c("formula", "data")). Note that names for both arguments 
@@ -99,6 +107,7 @@ interface. In this case, the accepted values for names depend on the method. For
 even if only one is actually used. For the call method, which does not have a formula argument, a
 character string specifying the argument name for the data should be supplied (the default is to use
 "data").
+
 If x is supplied, on the other hand, the predictor matrix and the response are added as separatearguments 
  to the function call. In this case, names should be a character vector of length two, with
 the first element specifying the argument name for the predictor matrix and the second element
@@ -110,13 +119,13 @@ noted that the formula or data arguments
 If tuning is an empty list, cvFit is called to return an object of class "cv".
 Otherwise an object of class "cvTuning" (which inherits from class "cvSelect") with the following
 components is returned:
-n an integer giving the number of observations.
-K an integer giving the number of folds.
-R an integer giving the number of replications.
-tuning a data frame containing the grid of tuning parameter values for which the prediction
-error was estimated.
-best an integer vector giving the indices of the optimal combinations of tuning parameters.
-cv a data frame containing the estimated prediction errors for all combinations of tuning parameter values. For repeated cross-validation, those are average values
+
+* n an integer giving the number of observations.
+* K an integer giving the number of folds.
+* R an integer giving the number of replications.
+* tuning a data frame containing the grid of tuning parameter values for which the prediction error was estimated.
+* best an integer vector giving the indices of the optimal combinations of tuning parameters.
+* cv a data frame containing the estimated prediction errors for all combinations of tuning parameter values. For repeated cross-validation, those are average values
 over all replications.
 
 se a data frame containing the estimated standard errors of the prediction loss for all combinations of tuning parameter values.
