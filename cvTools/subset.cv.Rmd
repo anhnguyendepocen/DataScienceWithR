@@ -17,15 +17,12 @@ select = NULL, ...)
 </code></pre>
 #### Arguments 
 
-x an object inheriting from class "cv" or "cvSelect" that contains cross-validation
-results.
-subset a character, integer or logical vector indicating the subset of models for which
-to keep the cross-validation results.
-select a character, integer or logical vector indicating the columns of cross-validation
-results to be extracted.
-... currently ignored.
-36 summary.cv
-Value
+* x an object inheriting from class "cv" or "cvSelect" that contains cross-validation results.
+* subset a character, integer or logical vector indicating the subset of models for which to keep the cross-validation results.
+* select a character, integer or logical vector indicating the columns of cross-validation results to be extracted.
+* ... currently ignored.
+
+#### Value
 An object similar to x containing just the selected results.
 Author(s)
 Andreas Alfons
@@ -56,3 +53,4 @@ cvFitsLts
 # extract reweighted LTS results with 50% subsets
 subset(cvFitLts50, select = "reweighted")
 subset(cvFitsLts, subset = c(TRUE, FALSE), select = "reweighted")
+```
