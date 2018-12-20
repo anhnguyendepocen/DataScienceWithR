@@ -23,14 +23,7 @@ aggregate(x, ...)
 method. Otherwise additional arguments 
  to be passed to FUN.
 
-#### Value
-The "cv" method returns a vector or matrix of aggregated cross-validation results, depending on whether FUN returns a single value or a vector.
-For the other methods, a data frame containing the aggregated cross-validation results for each model is returned. In the case of the "cvTuning" method, the data frame contains the combinations of tuning parameters rather than a column describing the models.
 
-#### Author(s)
-Andreas Alfons
-See Also
-cvFit, cvSelect, cvTuning, aggregate
 
 #### Examples 
 ```{r}
@@ -76,3 +69,12 @@ aggregate(cvFitsLmrob, summary)
 
 
 ```
+
+#### Value
+The "cv" method returns a vector or matrix of aggregated cross-validation results, depending on whether FUN returns a single value or a vector.
+For the other methods, a data frame containing the aggregated cross-validation results for each model is returned. In the case of the "cvTuning" method, the data frame contains the combinations of tuning parameters rather than a column describing the models.
+
+#### Author(s)
+Andreas Alfons
+See Also
+cvFit, cvSelect, cvTuning, aggregate
