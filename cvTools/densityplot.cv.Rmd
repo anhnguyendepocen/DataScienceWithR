@@ -17,27 +17,23 @@ select = NULL, ...)
 </code></pre>
 #### Arguments 
 
-x an object inheriting from class "cv" or "cvSelect" that contains cross-validation
-results.
-data currently ignored.
-subset a character, integer or logical vector indicating the subset of models for which
-to plot the cross-validation results.
-select a character, integer or logical vector indicating the columns of cross-validation
-results to be plotted.
-... additional 
-</code></pre>
-#### Arguments 
- to be passed to the "formula" method of densityplot.
+* x an object inheriting from class "cv" or "cvSelect" that contains cross-validation results.
+* data currently ignored.
+* subset a character, integer or logical vector indicating the subset of models for which to plot the cross-validation results.
+* select a character, integer or logical vector indicating the columns of cross-validation results to be plotted.
+* ... additional  Arguments to be passed to the "formula" method of densityplot.
 
 #### Details 
 
 For objects with multiple columns of repeated cross-validation results, conditional kernel density
 plots are produced.
-Value
+
+#### Value
 An object of class "trellis" is returned invisibly. The update method can be used to update components
 of the object and the print method (usually called by default) will plot it on an appropriate
 plotting device.
-Author(s)
+
+#### Author(s)
 Andreas Alfons
 densityplot.cv 27
 See Also
@@ -51,11 +47,17 @@ data("coleman")
 set.seed(1234) # set seed for reproducibility
 ## set up folds for cross-validation
 folds <- cvFolds(nrow(coleman), K = 5, R = 50)
+```
+
+```{r}
 ## compare LS, MM and LTS regression
 # perform cross-validation for an LS regression model
 fitLm <- lm(Y ~ ., data = coleman)
 cvFitLm <- cvLm(fitLm, cost = rtmspe,
 folds = folds, trim = 0.1)
+```
+
+```{r}
 # perform cross-validation for an MM regression model
 fitLmrob <- lmrob(Y ~ ., data = coleman, k.max = 500)
 cvFitLmrob <- cvLmrob(fitLmrob, cost = rtmspe,
@@ -71,6 +73,9 @@ cvFits
 densityplot(cvFitLmrob)
 # plot combined results
 densityplot(cvFits)
+```
+
+```{r}
 ## compare raw and reweighted LTS estimators for
 ## 50% and 75% subsets
 # 50% subsets
@@ -81,8 +86,9 @@ fit = "both", trim = 0.1)
 fitLts75 <- ltsReg(Y ~ ., data = coleman, alpha = 0.75)
 cvFitLts75 <- cvLts(fitLts75, cost = rtmspe, folds = folds,
 fit = "both", trim = 0.1)
-28 dotplot.cv
+
 # combine and plot results
 cvFitsLts <- cvSelect("0.5" = cvFitLts50, "0.75" = cvFitLts75)
 cvFitsLts
 densityplot(cvFitsLts)
+```
