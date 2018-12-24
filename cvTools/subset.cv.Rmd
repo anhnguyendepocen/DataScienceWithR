@@ -1,5 +1,14 @@
+---
+title: "``subset.cv  ``"
+output: html_document
+---
 
-subset.cv Subsetting cross-validation results
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(cvTools)
+```
+
+Subsetting cross-validation results
 
 #### Description 
 

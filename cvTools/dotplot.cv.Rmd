@@ -1,4 +1,14 @@
-dotplot.cv Dot plots of cross-validation results
+---
+title: "``dotplot.cv   ``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(cvTools)
+```
+
+Dot plots of cross-validation results
 
 #### Description 
 
@@ -71,7 +81,9 @@ fit = "both", trim = 0.1)
 fitLts75 <- ltsReg(Y ~ ., data = coleman, alpha = 0.75)
 cvFitLts75 <- cvLts(fitLts75, cost = rtmspe, folds = folds,
 fit = "both", trim = 0.1)
-30 plot.cv
+```
+
+```{r}
 # combine and plot results
 cvFitsLts <- cvSelect("0.5" = cvFitLts50, "0.75" = cvFitLts75)
 cvFitsLts

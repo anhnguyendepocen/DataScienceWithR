@@ -1,4 +1,14 @@
-cvSelect Model selection based on cross-validation
+---
+title: "``cvSelect ``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(cvTools)
+```
+
+Model selection based on cross-validation
 
 #### Description 
 
