@@ -1,4 +1,14 @@
-## ``rowmean``: Give Column Means of a Matrix-like Object, Based on a Grouping Variable
+---
+title: "``rowmean``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(analytics)
+```
+
+### Give Column Means of a Matrix-like Object, Based on a Grouping Variable
 
 #### Description
 Compute column (weighted) means across rows of a numeric matrix-like object for each level of a grouping variable.
@@ -39,6 +49,9 @@ numbers <- rnorm(1e7, mean = 3)
 C <- matrix(numbers, ncol = 5)
 gr <- rep(1:20, 1e5)
 rowmean(C, group = gr) # Handles Big Data fast
+```
+
+```{r}
 vec <- 1:10
 gr <- rep(1:2, 5)
 rowmean(vec, gr)
@@ -64,8 +77,7 @@ rowmean(D)
 This function is a wrapper for base function rowsum which allows one to compute the (weighted) mean instead of the sum, while handling integer overflow. Note: although data frames ara allowed, keep in mind that data frames do not allow duplicate rownames. Hence if you have a dataframe with more than 1 group, you may want to use the function as.matrix() to convert it to an object of class matrix To compute the mean over all the rows of a matrix (i.e. a single group) use colMeans, which should be even faster.
 
 #### Value
-A matrix-like object containing the means by group. There will be one row per unique value of group. If object supplied in fact (explicitly) had just one group, base function colMeans is called
-for maximum efficiency and a numeric vector containing the mean of each column is returned.
+A matrix-like object containing the means by group. There will be one row per unique value of group. If object supplied in fact (explicitly) had just one group, base function ``colMeans`` is called for maximum efficiency and a numeric vector containing the mean of each column is returned.
 
 #### Author(s)
 Albert Dorador

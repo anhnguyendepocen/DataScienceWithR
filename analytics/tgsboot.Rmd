@@ -1,5 +1,14 @@
+---
+title: "``tgsboot``"
+output: html_document
+---
 
-## tgsboot Bootstrap for Stationary Data
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(analytics)
+```
+
+###  Bootstrap for Stationary Data
 
 #### Description
 Generate bootstrap samples for stationary data, using a truncated geometric distribution to more accurately determine the value of the p parameter involved in the algorithm.
