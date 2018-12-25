@@ -1,7 +1,5 @@
 ---
 title: "``multifunctionality`` Ecosystem Multifunctionality"
-author: "Kevin O Brien"
-date: "5 December 2018"
 output: html_document
 ---
 
@@ -13,7 +11,9 @@ library(A3)
 
 #### Description
 
-This dataset relates multifunctionality to a number of different biotic and abiotic features in a global survey of drylands. The dataset was obtained from (http://www.sciencemag.org/content/335/6065/214/suppl/DC1). The dataset contains the features listed below.
+This dataset relates multifunctionality to a number of different biotic and abiotic features in a global survey of drylands. 
+The dataset was obtained from (http://www.sciencemag.org/content/335/6065/214/suppl/DC1). 
+The dataset contains the features listed below.
 
 #### Usage 
 
@@ -21,7 +21,7 @@ This dataset relates multifunctionality to a number of different biotic and abio
 data(multifunctionality)
 </code></pre>
   
-Details
+#### Details
 * ELE: Elevation of the site
 * LAT & LONG: Location of the site
 * SLO: Site slope
