@@ -1,5 +1,5 @@
 ---
-title: "``arsenal::``"
+title: "``arsenal::tableby.stats``"
 output: html_document
 ---
 
@@ -26,12 +26,9 @@ strata, control = NULL, ...)
 </code></pre>
 #### Arguments
 
-* ``formula ``: an object of class formula; a symbolic description of the variables to be summarized by the group, or categorical variable, of interest. See "Details" for more
-information. To only view overall summary statistics, a one-sided formula can
+* ``formula ``: an object of class formula; a symbolic description of the variables to be summarized by the group, or categorical variable, of interest. See "Details" for more information. To only view overall summary statistics, a one-sided formula can
 be used.
-* ``data``:  an optional data frame, list or environment (or object coercible by as.data.frame to a data frame) containing the variables in the model. If not found in data,
-the variables are taken from environment(formula), typically the environment
-from which the function is called.
+* ``data``:  an optional data frame, list or environment (or object coercible by as.data.frame to a data frame) containing the variables in the model. If not found in data, the variables are taken from environment(formula), typically the environment from which the function is called.
 * ``na.action``:  a function which indicates what should happen when the data contain NAs. The default is na.tableby(TRUE) if there is a by-variable, and na.tableby(FALSE)
 if there is not. This schema thus includes observations with NAs in x variables, but removes those with NA in the categorical group variable and strata (if used).
 subset an optional vector specifying a subset of observations (rows of data) to be used in the results. Works as vector of logicals or an index.
@@ -47,7 +44,8 @@ Arguments
 ... argument, but if a control object and ... arguments are both supplied, the
 latter are used. See tableby.control for more details.
 * ``... ``: additional arguments to be passed to internal tableby functions or tableby.control.
-Details
+
+#### Details
 The group variable (if any) is categorical, which could be an integer, character, factor, or ordered
 factor. tableby makes a simple summary of the counts within the k-levels of the independent
 variables on the right side of the formula. Note that unused levels are dropped.
@@ -88,7 +86,7 @@ See Also
 arsenal_table, anova, chisq.test, tableby.control, summary.tableby, formulize
 
 #### Examples
-
+```{r}
 data(mockstudy)
 tab1 <- tableby(arm ~ sex + age, data=mockstudy)
 summary(tab1, text=TRUE)
