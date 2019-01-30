@@ -6,8 +6,11 @@ Entropy Computation
 
 
 This function allows you to compute the family of alpha entropy as stated in Martos et al (2018).
-Usage
+
+#### Usage
+<pre><code>
 entropy(X,alpha=2,k.neighbor,scale=FALSE)
+</code></pre>
 
 #### Arguments 
 * X data in a matrix where variables are in columns and observations are in rows.
@@ -20,9 +23,10 @@ The function computes the alpha entropy and the local alpha entropy (see referen
 details) of a data set using a non parametric density estimator.
 
 #### Value
-local.entropy local entropy relative to each point in the sample.
-entropy estimated entropy.
-References
+* local.entropy local entropy relative to each point in the sample.
+* entropy estimated entropy.
+
+#### References
 Martos, G. et al (2018): Entropy Measures for Stochastic Processes with Applications in Functional
 Anomaly Detection. Entropy 20(1): 33 (2018).
 
