@@ -8,9 +8,7 @@ sample of functional data as stated in Hernandez et al (2018, submitted).
 
 #### Usage
 <pre><code>
-kmdepth.fd(fdframe, gamma = 1, kerfunc = "rbf" ,
-kerpar = list(sigma = 1, bias = 0, degree = 2) ,
-d = 2 , robust=TRUE , h=0.1 , nsamp=250)
+kmdepth.fd(fdframe, gamma = 1, kerfunc = "rbf" , kerpar = list(sigma = 1, bias = 0, degree = 2) , d = 2 , robust=TRUE , h=0.1 , nsamp=250)
 </code></pre>
 
 #### Arguments 
