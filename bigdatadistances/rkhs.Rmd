@@ -32,10 +32,10 @@ plot(f.data, xlab='time', ylab='Merval data')
 
 #### Value
 
-* fdframe raw data in an fdframe object.
-* f estimated functional data
-* alpha coefficients for the linear combination.
-* lambda.star reduced coefficients for the linear combination.
+* ``fdframe``: raw data in an fdframe object.
+* ``f``: estimated functional data
+* ``alpha``: coefficients for the linear combination.
+* ``lambda.star``: reduced coefficients for the linear combination.
 
 #### Author(s)
 Hernandez and Martos
