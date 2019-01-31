@@ -20,7 +20,7 @@ d = 2 , robust=TRUE , h=0.1 , nsamp=250)
 * ``kerpar``: a list of kernel parameters where sigma is the scale with both kernels.
 * ``d``: truncation parameter in the Reproducing Kernel Hilbert Space representation.
 * ``robust``: TRUE if the covariance matrix is estimated through Robust Maximum Likelihood method.
-* ``h``: numeric parameter controlling the a-prioir precentage of outliers in the sample (value between 0 and 1, by def = 0.1).
+* ``h``: numeric parameter controlling the a-prioir precentage of outliers in the sample (value between 0 and 1, by ``def = 0.1``).
 * ``nsamp``: number of subsets used for initial estimates (by def = 250).
 
 #### Examples 
@@ -38,9 +38,8 @@ col = color, xlab='time',ylab='')
 ```
 
 #### Value
-depth
-the kernel-mahalanobis depth measure for the curves in the sample.8
-levelsetdist
+
+* ``depth`` : the kernel-mahalanobis depth measure for the curves in the sample.
 
 #### Author(s)
 Hernandez and Martos
