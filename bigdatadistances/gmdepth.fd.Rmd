@@ -2,9 +2,7 @@
 
 
 #### Description 
-This function allows you to compute the Generalized Kernel Mahalanobis depth measure as stated
-in Hernandez et al (2018, submitted) and the Generalized Mahalanobis distance in Martos et al
-(2014), for functional data represented in a Reproducing Kernel Hilbert Space.
+This function allows you to compute the Generalized Kernel Mahalanobis depth measure as stated in Hernandez et al (2018, submitted) and the Generalized Mahalanobis distance in Martos et al (2014), for functional data represented in a Reproducing Kernel Hilbert Space.
 
 ####Usage
 <pre><code>
@@ -37,8 +35,8 @@ plot(rkhs(raw.data,gamma=0.0001,kerfunc="rbf",kerpar=list(sigma = 10)),col = col
 ```
 
 #### Value
-depth the generalized Mahalanobis depth measure for the curves in the sample.
-distance the generalized Mahalanobis distance for the curves in the sample.
+* ``depth``: the generalized Mahalanobis depth measure for the curves in the sample.
+* ``distance``: the generalized Mahalanobis distance for the curves in the sample.
 
 #### Author(s)
 Hernandez and Martos
