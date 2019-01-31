@@ -14,14 +14,14 @@ alpha=2,d=2,resol,k.neighbor)
 </code></pre>
 
 #### Arguments 
-* fdframe functional data frame fdframe object.
-* gamma regularization parameter.
-* kerfunc kernel function (rbf or poly) to be used.
-* kerpar a list of kernel parameters where sigma is the scale with both kernels.
-* alpha Entropy parameter.
-* d Dimension truncation in the Reproducing Kernel Hilbert Space representation.
-* resol number of level sets used to compute the functional entropy.
-* k.neighbor number of points to estimate the support of the distribution.
+* ``fdframe``: functional data frame fdframe object.
+* ``gamma``: regularization parameter.
+* ``kerfunc``: kernel function (rbf or poly) to be used.
+* ``kerpar``: a list of kernel parameters where sigma is the scale with both kernels.
+* ``alpha``: Entropy parameter.
+* ``d``: Dimension truncation in the Reproducing Kernel Hilbert Space representation.
+* ``resol``: number of level sets used to compute the functional entropy.
+* ``k.neighbor``: number of points to estimate the support of the distribution.
 
 #### Examples 
 
@@ -34,17 +34,14 @@ alpha=2, k.neighbor=15)
 ```
 
 #### Details
-This function estimates the entropy of a stochastic process. To this aim, the raw functional data is
-projected onto a Reproducing Kernel Hilbert Space, and the entropy is estimated using the coeffi-
-cient of these functions.
+This function estimates the entropy of a stochastic process. To this aim, the raw functional data is projected onto a Reproducing Kernel Hilbert Space, and the entropy is estimated using the coefficient of these functions.
 
 #### Value
-local.entropy local entropy relative to each curve in the sample.
-entropy estimated entropy of the the set of functions.
+* ``local.entropy``: local entropy relative to each curve in the sample.
+* ``entropy``: estimated entropy of the the set of functions.
 
 #### Author(s)
 Hernandez and Martos
 
 #### References
-Martos, G. et al (2018). Entropy Measures for Stochastic Processes with Applications in Functional
-Anomaly Detection. Entropy 20(1), 33 (2018).
+Martos, G. et al (2018). Entropy Measures for Stochastic Processes with Applications in Functional Anomaly Detection. Entropy 20(1), 33 (2018).
