@@ -5,15 +5,15 @@
 #### Description 
 
 
-The data consist of set of measurements across years of male mortality rates in Australia from
-package fds.
+The data consist of set of measurements across years of male mortality rates in Australia from package ***fds***.
 
 #### Usage
+<pre><code>
 Ausmale
+</code></pre>
 
 #### Format
-A list with years in the first component and a 101 times 103 matrix, years in rows and cohorts in
-columns, in the second component.
+A list with years in the first component and a 101 times 103 matrix, years in rows and cohorts in columns, in the second component.
 
 #### Source
 fds
