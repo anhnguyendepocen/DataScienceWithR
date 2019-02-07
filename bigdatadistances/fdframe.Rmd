@@ -1,5 +1,13 @@
+---
+title: "``bigdatadist::fdframe``"
+output: html_document
+---
 
-## ``fdframe``
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(bigdatadist)
+```
+
 
 Functional Data Frame
 
@@ -19,6 +27,7 @@ fdframe(t, Y)
 * ``Y``: matrix with functions in columns and observations in rows.
 
 #### Examples 
+
 ```{r}
 t = 1:10; Y = cbind(sin(t),cos(t))
 fdata = fdframe(t,Y)

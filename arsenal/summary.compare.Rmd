@@ -7,7 +7,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-summary.compare
+
 The summary method for a compare.data.frame object
 
 #### Description
@@ -27,20 +27,14 @@ print(x, ..., format = "pandoc")
 </code></pre>
 #### Arguments
 
-object An object of class "compare.data.frame", as made by the compare.data.frame
-S3 method.
-... Other arguments. In print, these are passed to kable.
-show.attrs
-Logical, denoting whether to show the actual attributes which are different. For
-(e.g.) factors with lots of levels, this can make the tables quite wide, so this
+* object An object of class "compare.data.frame", as made by the compare.data.frame S3 method.
+* ... Other arguments. In print, these are passed to kable.
+* show.attrs: Logical, denoting whether to show the actual attributes which are different. For (e.g.) factors with lots of levels, this can make the tables quite wide, so this
 feature is FALSE by default.
-max.print.vars, max.print.obs, max.print.diff, max.print.attrs
-Integers denoting the maximum number of differences to report for each of the
-three tables. Passing NA will print all differences.32
-summary.freqlist
-x An object returned by the summary.compare.data.frame function.
-format Passed to kable: the format for the table. The default here is "pandoc". To use
-the default in kable, pass NULL.
+* max.print.vars, max.print.obs, max.print.diff, max.print.attrs
+Integers denoting the maximum number of differences to report for each of the three tables. Passing NA will print all differences.
+* x An object returned by the summary.compare.data.frame function.
+* format Passed to kable: the format for the table. The default here is "pandoc". To use the default in kable, pass NULL.
 
 #### Value
 

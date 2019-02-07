@@ -1,6 +1,12 @@
+---
+title: "``arsenal::padjust``"
+output: html_document
+---
 
-## ``padjust``
-Adjust P-values for Multiple Comparisons
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(arsenal)
+```
 
 #### Description
 
@@ -20,11 +26,11 @@ suffix = " (adjusted for multiple comparisons)", ...)
 
 </code></pre>
 #### Arguments
+* p An object.
+* method correction method. Can be abbreviated.
+* n number of comparisons, must be at least length(p); only set this (to non-default) when you know what you are doing!
+* ... Other arguments.
+* suffix A suffix to add to the footnotes indicating that the tests were adjusted.
 
-p An object.
-method correction method. Can be abbreviated.
-n number of comparisons, must be at least length(p); only set this (to non-default) when you know what you are doing!
-... Other arguments.
-suffix A suffix to add to the footnotes indicating that the tests were adjusted.
-See Also
+#### See Also
 p.adjust, modpval.tableby, tests.tableby

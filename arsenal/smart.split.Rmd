@@ -1,4 +1,12 @@
+---
+title: "``arsenal::summary.compare``"
+output: html_document
+---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(arsenal)
+```
 
 ## ``smart.split``
 Split a string into pieces intelligently

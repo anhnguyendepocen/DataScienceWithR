@@ -1,5 +1,14 @@
+---
+title: "``arsenal::modelsum.internal``"
+output: html_document
+---
 
-modelsum.internal
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(arsenal)
+```
+
+
 Helper functions for modelsum
 
 #### Description

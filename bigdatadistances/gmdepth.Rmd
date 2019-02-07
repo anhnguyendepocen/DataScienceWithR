@@ -1,5 +1,14 @@
+---
+title: "``bigdatadist::gmdepth``"
+output: html_document
+---
 
-gmdepth
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(bigdatadist)
+```
+
+
 Generalized Mahalanobis Depth and Distance
 
 
@@ -11,17 +20,17 @@ This function allows you to compute the Generalized Kernel Mahalanobis depth mea
 #### Usage
 <pre><code>
 gmdepth(A,b,resol,k.neighbor)
-<code></pre>
+</code></pre>
 
 #### Arguments 
-* A data matrix where variables in columns, observations in rows.
-* b a new point in the support of the distribution to evaluate the depth. If omitted, the function compute the distances and depth between all points in the sample.
+* ``A``: data matrix where variables in columns, observations in rows.
+* ``b``: a new point in the support of the distribution to evaluate the depth. If omitted, the function compute the distances and depth between all points in the sample.
 * ``resol``:  resolution level, i.e. number of density level sets to consider.
-* k.neighbor number of local neighbours to estimate the support.
+* ``k.neighbor``: number of local neighbours to estimate the support.
 
 #### Value
-* depth the generalized Mahalanobis depth measure.
-* distance the generalized Mahalanobis distance measure.
+* ``depth``: the generalized Mahalanobis depth measure.
+* ``distance``: the generalized Mahalanobis distance measure.
 
 #### Examples 
 ```{r}
@@ -33,9 +42,7 @@ C=rbind(A,b)
 plot(C, pch=20, col=c(rep('black',450),rep('red',50)),
 xlab='x1',ylab='x2')
 gmd.fit = gmdepth(A=C)
-depth
-= gmd.fit$depth6
-gmdepth.fd
+depth= gmd.fit$depth
 distance = gmd.fit$distance
 plot(depth,distance, pch=20,
 col=c(rep('black',450),rep('red',50)))

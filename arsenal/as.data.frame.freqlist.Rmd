@@ -1,5 +1,14 @@
+---
+title: "``arsenal::as.data.frame.freqlist``"
+output: html_document
+---
 
-as.data.frame.freqlist
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(arsenal)
+```
+
+
 
 #### Description
 
@@ -15,22 +24,12 @@ list.ok = FALSE)
 </code></pre>
 #### Arguments
 
-x
-An object of class "freqlist".
-...
-
-</code></pre>
-#### Arguments
- to pass to freq.control
-labelTranslations
-A named list (or vector) where the name is the label in the output to be replaced
-in the pretty rendering by the character string value for the named element of
+* ``x``: An object of class "freqlist".
+* ``...`` : arguments to pass to freq.control
+* ``labelTranslations``: A named list (or vector) where the name is the label in the output to be replaced in the pretty rendering by the character string value for the named element of
 the list, e.g., list(age = "Age(Years)", meansd = "Mean(SD)").
-list.ok
-If the object has multiple by-variables, is it okay to return a list of data.frames
-instead of a single data.frame? If FALSE but there are multiple by-variables, a
-warning is issued.6
-as.data.frame.modelsum
+* ``list.ok`` : If the object has multiple by-variables, is it okay to return a list of data.frames instead of a single data.frame? If FALSE but there are multiple by-variables, a
+warning is issued.
 
 #### Value
 

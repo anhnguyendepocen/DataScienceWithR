@@ -1,5 +1,15 @@
+---
+title: "``Arsenal::comparison.tolerances``"
+output: html_document
+---
 
-comparison.tolerances Comparison tolerances
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+Comparison tolerances
 
 #### Description
 

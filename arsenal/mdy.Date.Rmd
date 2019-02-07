@@ -1,3 +1,13 @@
+---
+title: "``arsenal::``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(arsenal)
+```
+
 ## ``mdy.Date``
 Convert numeric dates to Date object, and vice versa
 

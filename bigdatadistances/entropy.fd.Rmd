@@ -1,6 +1,14 @@
+---
+title: "``bigdatadist::entropy.fd``"
+output: html_document
+---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(bigdatadist)
+```
 
-## ``entropy.fd``:  Functional Entropy Measures
+Functional Entropy Measures
 
 #### Description 
 This function allows you to compute the family of alpha-Entropy for functional data as stated in Martos et al (2018).
@@ -16,7 +24,7 @@ alpha=2,d=2,resol,k.neighbor)
 #### Arguments 
 * ``fdframe``: functional data frame fdframe object.
 * ``gamma``: regularization parameter.
-* ``kerfunc``: kernel function (rbf or poly) to be used.
+* ``kerfunc``: kernel function (``rbf`` or ``poly``) to be used.
 * ``kerpar``: a list of kernel parameters where sigma is the scale with both kernels.
 * ``alpha``: Entropy parameter.
 * ``d``: Dimension truncation in the Reproducing Kernel Hilbert Space representation.

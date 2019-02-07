@@ -1,3 +1,13 @@
+---
+title: "``arsenal::``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(arsenal)
+```
+
 as.data.frame.tableby as.data.frame.tableby
 
 #### Description
