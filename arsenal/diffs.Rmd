@@ -1,0 +1,93 @@
+
+diffs
+Extract differences
+
+#### Description
+
+Extract differences, number of differences, or number of not-shared observations from a compare
+object.
+
+#### Usage
+<pre><code>
+
+n.diff.obs(object, ...)
+## S3 method for class 'compare.data.frame'
+n.diff.obs(object, ...)
+## S3 method for class 'summary.compare.data.frame'
+n.diff.obs(object, ...)
+n.diffs(object, ...)
+## S3 method for class 'compare.data.frame'
+n.diffs(object, ...)
+## S3 method for class 'summary.compare.data.frame'
+n.diffs(object, ...)
+diffs(object, ...)
+## S3 method for class 'compare.data.frame'
+diffs(object, vars = NULL, ...,
+by.var = FALSE)
+## S3 method for class 'summary.compare.data.frame'
+diffs(object, vars = NULL, ...,
+by.var = FALSE)
+
+</code></pre>
+#### Arguments
+
+object An object of class compare.data.frame or summary.compare.data.frame.
+... Other arguments (not in use at this time).
+vars A character vector of variable names to subset the results to.
+by.var Logical: should the number of differences by variable be reported, or should all
+differences be reported (the default).
+
+#### Author(s)
+Ethan Heinzen
+See Also
+compare.data.frame summary.compare.data.frame
+formulize
+formulize
+
+#### Description
+
+A shortcut to generate one-, two-, or many-sided formulas from vectors of variable names.
+
+#### Usage
+<pre><code>
+
+formulize(y = "", x = "", ..., data = NULL)
+
+</code></pre>
+#### Arguments
+
+y, x, ... Character vectors, names, or calls to be collapsed (by "+") and put left-to-right
+in the formula. If data is supplied, these can also be numeric, denoting which
+column name to use. See examples.
+data An R object with non-null column names.
+Author(s)
+Ethan Heinzen
+See Also
+reformulate
+
+#### Examples
+
+## two-sided formula
+formulize("y", c("x1", "x2", "x3"))
+## one-sided formula
+formulize(x = c("x1", "x2", "x3"))
+## multi-sided formula
+formulize("y", c("x1", "x2", "x3"), c("z1", "z2"), "w1")
+## can use numerics for column names
+data(mockstudy)
+formulize(y = 1, x = 2:4, data = mockstudy)14
+freq.control
+## mix and match
+formulize(1, c("x1", "x2", "x3"), data = mockstudy)
+## get an interaction
+formulize("y", c("x1*x2", "x3"))
+## no intercept
+formulize("y", "x1 - 1")
+formulize("y", c("x1", "x2", "-1"))
+## use in an lm
+form <- formulize(2, 3:4, data = mockstudy)
+summary(lm(form, data = mockstudy))
+## using non-syntactic names or calls (like reformulate example)
+formulize(as.name("+-"), c("`P/E`", "`% Growth`"))
+f <- Surv(ft, case) ~ a + b
+formulize(f[[2]], f[[3]])
