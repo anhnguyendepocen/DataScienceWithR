@@ -788,467 +788,8 @@ combine(x=a,y=b)
 combine(a,b,names=c("one","two"))
 c <- 1:6
 combine(b,c)
-ConvertMedUnits
-Convert medical measurements between International Standard (SI)
-and US ’Conventional’ Units.
-
-#### Description
-
-Convert Medical measurements between International Standard (SI) and US ’Conventional’ Units.
-
-#### Usage
-<pre><code>
-
-ConvertMedUnits(x, measurement, abbreviation,
-to = c("Conventional", "SI", "US"),
-exact = !missing(abbreviation))ConvertMedUnits
-11
-
-</code></pre>
-#### Arguments
-
-x Vector of measurement values
-measurement Name of the measurement
-abbreviation Measurement abbreviation
-to Target units
-exact Logicial indicating whether matching should be exact
-
-#### Details
-
-Medical laboratories and practitioners in the United States use one set of units (the so-called ’Conventional’ units) for reporting the results of clinical laboratory measurements, while the rest of the
-world uses the International Standard (SI) units. It often becomes necessary to translate between these units when participating in international collaborations.
-This function converts between SI and US ’Conventional’ units.
-If exact=FALSE, grep will be used to do a case-insensitive sub-string search for matching measurement names. If more than one match is found, an error will be generated, along with a list of the
-matching entries.
-
-#### Value
-
-Returns a vector of converted values. The attribute ’units’ will contain the target units converted.
-Author(s)
-Gregory R. Warnes <greg@warnes.net>
-References
-http://www.globalrph.com/conv_si.htm
-See Also
-The data set MedUnits provides the conversion factors.
-
-#### Examples
-```{r}
-
-data(MedUnits)
-# show available conversions
-MedUnits$Measurement
-# Convert SI Glucose measurement to 'Conventional' units
-GlucoseSI = c(5, 5.4, 5, 5.1, 5.6, 5.1, 4.9, 5.2, 5.5) # in SI Units
-GlucoseUS = ConvertMedUnits( GlucoseSI, "Glucose", to="US" )
-cbind(GlucoseSI,GlucoseUS)
-## Not run:
-# See what happens when there is more than one match12
-drop.levels
-ConvertMedUnits( 27.5, "Creatin", to="US")
-## End(Not run)
-# To solve the problem do:
-ConvertMedUnits( 27.5, "Creatinine", to="US", exact=TRUE)
 ```
-
-drop.levels
-Drop unused factor levels
-
-#### Description
-
-Drop unused levels in a factor
-
-#### Usage
-<pre><code>
-
-drop.levels(x, reorder=TRUE, ...)
-
-</code></pre>
-#### Arguments
-
-x object to be processed
-reorder should factor levels be reordered using reorder.factor?
-... additional arguments to reorder.factor
-
-#### Details
-
-drop.levels is a generic function, where default method does nothing, while method for factor s
-drops all unused levels. Drop is done with x[, drop=TRUE].
-There are also convenient methods for list and data.frame, where all unused levels are dropped
-in all factors (one by one) in a list or a data.frame.
-
-#### Value
-
-Input object without unused levels.
-Author(s)
-Jim Rogers <james.a.rogers@pfizer.com> and Gregor Gorjanc
-
-#### Examples
-```{r}
-
-f <- factor(c("A", "B", "C", "D"))[1:3]
-drop.levels(f)
-l <- list(f=f, i=1:3, c=c("A", "B", "D"))
-drop.levels(l)
-df <- as.data.frame(l)
-str(df)
-str(drop.levels(df))
-duplicated2
-Determine Duplicate Elements
-
-#### Description
-
-duplicated2() determines which elements of a vector or data frame are duplicates, and returns a logical vector indicating which elements (rows) are duplicates.
-
-#### Usage
-<pre><code>
-
-duplicated2(x, bothWays=TRUE, ...)
-
-</code></pre>
-#### Arguments
-
-x a vector or a data frame or an array or NULL.
-bothWays if TRUE (the default), duplication should be considered from both sides. For more information see the argument fromLast to the function duplicated.
-... furt* ``...``: arguments passed down to duplicated() and its methods.
-
-#### Details
-
-The standard duplicated function (in package:base) only returns TRUE for the second and following copies of each duplicated value (second-to-last and earlier when fromLast=TRUE). This function returns all duplicated elementes, including the first (last) value.
-When bothWays is FALSE, duplicated2() defaults to a duplicated call. When bothWays is TRUE, the following call is being executed: duplicated(x, ...) | duplicated(x, fromLast=TRUE, ...)
-
-#### Value
-
-For a vector input, a logical vector of the same length as x. For a data frame, a logical vector with one element for each row. For a matrix or array, and when MARGIN = 0, a logical array with the
-same dimensions and dimnames.
-For more details see duplicated.
-Author(s)
-Liviu Andronic
-See Also
-duplicated, unique14
-elem
-
-#### Examples
-```{r}
-
-data(iris)
-iris[duplicated(iris), ]
-# 2nd duplicated value
-iris[duplicated(iris, fromLast=TRUE), ] # 1st duplicated value
-iris[duplicated2(iris), ]
-# both duplicated values
-elem
-Display Information about Elements in a Given Object
-
-#### Description
-
-This function is depreciated. Please use ll instead.
-Display name, class, size, and dimensions of each element in a given object.
-
-#### Usage
-<pre><code>
-
-elem(object=1, unit=c("KB","MB","bytes"), digits=0,
-dimensions=FALSE)
-
-</code></pre>
-#### Arguments
-
-object object containing named elements, perhaps a model or data frame.
-unit required unit for displaying element size: "KB", "MB", "bytes", or first letter.
-digits number of decimals to display when rounding element size.
-dimensions whether element dimensions should be returned.
-
-#### Details
-
-A verbose alternative to names().
-
-#### Value
-
-A data frame with named rows and the following columns:
-Class element class.
-KB element size (see notes).
-Dim element dimensions (optional).
-Note
-The name of the element size column is the same as the unit used.
-Elements of class classRepresentation, ClassUnionRepresentation, and grob do not have a
-defined size, so 0 bytes are assumed for those.env
-15
-Author(s)
-Arni Magnusson <arnima@u.washington.edu>
-See Also
-names, str, and summary display different information about object elements.
-ll and env are related to elem.
-
-#### Examples
-```{r}
-
-## Not run:
-data(infert)
-elem(infert)
-model <- glm(case~spontaneous+induced, family=binomial, data=infert)
-elem(model, dim=TRUE)
-elem(model$family)
-## End(Not run)
-env
-Describe All Loaded Environments
-
-#### Description
-
-Display name, number of objects, and size of all loaded environments.
-
-#### Usage
-<pre><code>
-
-env(unit="KB", digits=0)
-
-</code></pre>
-#### Arguments
-
-unit unit for displaying environment size: "bytes", "KB", "MB", or first letter.
-digits number of decimals to display when rounding environment size.
-
-#### Value
-
-A data frame with the following columns:
-Environment environment name.
-Objects number of objects in environment.
-KB environment size (see notes).
-Note
-The name of the environment size column is the same as the unit used.16
-first
-Author(s)
-Arni Magnusson
-See Also
-env is a verbose alternative to search.
-ll is a related function that describe* ``s``: objects in an environment.
-
-#### Examples
-```{r}
-
-## Not run:
-env()
-## End(Not run)
-```
-
-first
-Return first or last element of an object
-
-#### Description
-
-Return first or last element of an object. These functions are convenience wrappers for head(x, n=1, ...)
-and tail(x, n=1, ...).
-
-#### Usage
-<pre><code>
-
-first(x, n=1, ...)
-last(x, n=1, ...)
-first(x, n=1, ...) <- value
-last(x, n=1, ...) <- value
-
-</code></pre>
-#### Arguments
-
-* ``x ``: data object
-n a single integer. If positive, size for the resulting object: number of elements for a vector (including lists), rows for a matrix or data frame or lines for a function.
-If negative, all but the ’n’ last/first number of elements of ’x’.
-* ... arguments to be passed to or from other methods.
-* ``value`` a vector of values to be assigned (should be of length n)
-
-#### Value
-
-An object (usually) like ’x’ but generally smaller.
-Author(s)
-Gregory R. Warnes <greg@warnes.net>frameApply
-17
-See Also
-head, tail, left, right
-
-#### Examples
-```{r}
-
-## works for vectors..
-v <- 1:10
-first(v)
-last(v)
-first(v) <- 9
-v
-last(v) <- 20
-v
-## and for lists
-l <- list(a=1, b=2, c=3)
-first(l)
-last(l)
-first(l) <- "apple"
-last(l) <- "bannana"
-l
-## and data.frames
-df <- data.frame(a=1:2, b=3:4, c=5:6)
-first(df)
-last(df)
-first(df) <- factor(c("red","green"))
-last(df) <- list(c(20,30)) # note the enclosing list!
-df
-## and matrixes
-m <- as.matrix(df)
-first(m)
-last(m)
-first(m) <- "z"
-last(m) <- "q"
-m
-frameApply
-Subset analysis on data frames
-
-#### Description
-
-Apply a function to row subsets of a data frame.18
-frameApply
-
-#### Usage
-<pre><code>
-
-frameApply(x, by=NULL, on=by[1], fun=function(xi) c(Count=nrow(xi)),
-subset=TRUE, simplify=TRUE, byvar.sep="\$\\@\$", ...)
-
-</code></pre>
-#### Arguments
-
-* x a data frame
-* by names of columns in x specifying the variables to use to form the subgroups. None of the by variables should have the name "sep" (you will get an error if one of them does; a bit of laziness in the code). Unused levels of the by variables
-will be dropped. Use by = NULL (the default) to indicate that all of the data is to be treated as a single (trivial) subgroup.
-* ``on``: names of columns in x specifying columns over which fun is to be applied.
-These can include columns specified in by, (as with the default) although that is not usually the case.
-* ``fun``: a function that can operate on data frames that are row subsets of x[on]. If simplify = TRUE, the return value of the function should always be either a
-try-error (see try), or a vector of fixed length (i.e. same length for every subset), preferably with named elements.
-* subset logical vector (can be specified in terms of variables in data). This row subset of x is taken before doing anything else.
-* ``simplify``: logical. If TRUE (the default), return value will be a data frame including the by columns and a column for each element of the return vector of fun. If FALSE,
-the return value will be a list, sometimes necessary for less structured output (see description of return value below).
-* ``byvar.sep``: character. This can be any character string not found anywhere in the values of the by variables. The by variables will be pasted together using this as the
-separator, and the result will be used as the index to form the subgroups.
-... additional arguments to fun.
-
-#### Details
-
-This function accomplishes something similar to by. The main difference is that frameApply is designed to return data frames and lists instead of objects of class ’by’. Also, frameApply works
-only on the unique combinations of the by that are actually present in the data, not on the entire cartesian product of the by variables. In some cases this results in great gains in efficiency, although
-frameApply is hardly an efficient function.
-
-#### Value
-
-a data frame if simplify = TRUE (the default), assuming there is sufficiently structured output from fun. If simplify = FALSE and by is not NULL, the return value will be a list with two elements.
-The first element, named "by", will be a data frame with the unique rows of x[by], and the second element, named "result" will be a list where the ith component gives the result for the ith row of the
-"by" element.gdata-defunct
-19
-Author(s)
-Jim Rogers <james.a.rogers@pfizer.com>
-
-#### Examples
-```{r}
-
-data(ELISA, package="gtools")
-# Default is slightly unintuitive, but commonly useful:
-frameApply(ELISA, by = c("PlateDay", "Read"))
-# Wouldn't actually recommend this model! Just a demo:
-frameApply(ELISA, on = c("Signal", "Concentration"), by = c("PlateDay", "Read"),
-fun = function(dat) coef(lm(Signal ~ Concentration, data =
-dat)))
-frameApply(ELISA, on = "Signal", by = "Concentration",
-fun = function(dat, ...) {
-x <- dat[[1]]
-out <- c(Mean = mean(x, ...),
-SD = sd(x, ...),
-N = sum(!is.na(x)))
-},
-na.rm = TRUE,
-subset = !is.na(Concentration))
-```
-
-gdata-defunct
-Defunct Functions in Package ’gdata’
-
-#### Description
-
-The functions or variables listed here are no longer part of ’gdata’.
-
-#### Usage
-<pre><code>
-
-aggregate.table(x, by1, by2, FUN=mean, ...)
-
-</code></pre>
-#### Arguments
-
-x
-by1
-by2
-FUN
-...
-data to be summarized
-first grouping factor.
-second grouping factor.
-a scalar function to compute the summary statistics which can be applied to all
-data subsets. Defaults to mean.
-Optional arguments for FUN.
-
-#### Details
-
-aggregate.table(x, by1, by2, FUN=mean, ...) should be replacede by tapply(X=x, INDEX=list(by1, by2), FUN=F20
-getYear
-getYear
-Get date/time parts from date and time objects
-
-#### Description
-
-get* functions provide an *experimental* approach for extracting the date/time parts from objects
-of a date/time class. They are designed to be intiutive and thus lowering the learning curve for work
-with date and time classes in R.
-
-#### Usage
-<pre><code>
-
-getYear(x, format, ...)
-getMonth(x, format, ...)
-getDay(x, format, ...)
-getHour(x, format, ...)
-getMin(x, format, ...)
-getSec(x, format, ...)
-
-</code></pre>
-#### Arguments
-
-x generic, date/time object
-format character, format
-... arguments pased to other methods
-
-#### Value
-
-Character
-Author(s)
-Gregor Gorjanc
-See Also
-Date, DateTimeClasses, strptime
-
-#### Examples
-```{r}
-
-## --- Date class ---
-tmp <- Sys.Date()
-tmp
-getYear(tmp)
-getMonth(tmp)humanReadable
-21
-getDay(tmp)
-## --- POSIXct class ---
-tmp <- as.POSIXct(tmp)
-getYear(tmp)
-getMonth(tmp)
-getDay(tmp)
-## --- POSIXlt class ---
-tmp <- as.POSIXlt(tmp)
-getYear(tmp)
-getMonth(tmp)
-getDay(tmp)
-```
+     
 
 humanReadable
 Print Byte Size in Human Readable Format
@@ -1269,8 +810,7 @@ digits=1, width=NULL, sep=" ", justify=c("right", "left") )
 x integer, byte size
 standard character, "IEC" for powers of 1024 (’MiB’), "SI" for powers of 1000 (’MB’),
 or "Unix" for powers of 1024 (’M’). See details.
-units character, unit to use for all values (optional), one of "auto", "bytes", or an
-appropriate unit corresponding to standard.
+units character, unit to use for all values (optional), one of "auto", "bytes", or an appropriate unit corresponding to standard.
 digits integer, number of digits after decimal point
 width integer, width of number string
 sep character, separator between number and unit
@@ -1649,15 +1189,12 @@ left
 
 ... objects to be kept, specified one by one, quoted or unquoted.
 list character vector of object names to be kept.
-all whether hidden objects (beginning with a .) should be removed, unless explic-
-itly kept.
-sure whether to perform the removal, otherwise return names of objects that would
-have been removed.
+all whether hidden objects (beginning with a .) should be removed, unless explicitly kept.
+sure whether to perform the removal, otherwise return names of objects that would have been removed.
 
 #### Details
 
-Implemented with safety caps: objects whose name starts with a . are not removed unless all=TRUE,
-and an explicit sure=TRUE is required to remove anything.
+Implemented with safety caps: objects whose name starts with a . are not removed unless all=TRUE, and an explicit sure=TRUE is required to remove anything.
 
 #### Value
 
@@ -1717,8 +1254,7 @@ Describe Objects or Elements
 
 #### Description
 
-Display name, class, size, and dimensions of each object in a given environment. Alternatively, if
-the main argument is a list-like object, its elements are listed and described.
+Display name, class, size, and dimensions of each object in a given environment. Alternatively, if the main argument is a list-like object, its elements are listed and described.
 
 #### Usage
 <pre><code>
@@ -1729,15 +1265,14 @@ invert=FALSE, ...)
 </code></pre>
 #### Arguments
 
-pos environment position number, environment name, data frame, list, model, or any
-object that is.list.
-unit unit for displaying object size: "bytes", "KB", "MB", or first letter.
-digits number of decimals to display when rounding object size.
-dim whether object dimensions should be returned.
-sort whether elements should be sorted by name.
-class character vector for limiting the output to specified classes.
-invert whether to invert the class filter, so specified classes are excluded.
-... passed to ls.30
+* pos environment position number, environment name, data frame, list, model, or any object that is.list.
+* unit unit for displaying object size: "bytes", "KB", "MB", or first letter.
+* digits number of decimals to display when rounding object size.
+* dim whether object dimensions should be returned.
+* sort whether elements should be sorted by name.
+* class character vector for limiting the output to specified classes.
+* invert whether to invert the class filter, so specified classes are excluded.
+* ... passed to ls.30
 ls.funs
 
 #### Value
@@ -1748,7 +1283,8 @@ KB object size (see note).
 Dim object dimensions (optional).
 Note
 The name of the object size column is the same as the unit used.
-Author(s)
+
+#### Author(s)
 Arni Magnusson, with a contribution by Jim Rogers
 See Also
 ll is a verbose alternative to ls (objects in an environment) and names (elements in a list-like
@@ -1793,8 +1329,7 @@ ls.funs(...)mapLevels
 
 #### Details
 
-This function calls ls and then returns a character vector containing only the names of only function
-objects.
+This function calls ls and then returns a character vector containing only the names of only function objects.
 
 #### Value
 
@@ -1867,7 +1402,9 @@ GlucoseUS = GlucoseSI / matchUnits("Glucose")$Conversion
 cbind(GlucoseSI,GlucoseUS)
 # also consider using ConvertMedUnits()
 ConvertMedUnits( GlucoseSI, "Glucose", to="US" )
-mv
+```
+
+### mv
 Rename an Object
 
 #### Description
@@ -1948,7 +1485,8 @@ The base R package stats now provides a S3 dispatch function for nobs, and metho
 Since they provided a subset of the the functionality, the base method dispatch (nobs) function and method for "lm" objects (nobs.lm) are, as of gdata version 2.10.1, simply aliases for the equivalent
 functions in the base R stats package.
 Since gdata’s default method (nobs.default) processes vectors and hands any other data/object types to stats:::nobs.default.
-Author(s)
+
+#### Author(s)
 Gregory R. Warnes <greg@warnes.net>
 See Also
 is.na, length
@@ -1966,7 +1504,9 @@ df[2,1] <- NA
 nobs(df)
 fit <- lm(y ~ x, data=df)
 nobs(fit)
-nPairs
+```
+
+## ``nPairs``
 Number of variable pairs
 
 #### Description
@@ -1997,8 +1537,7 @@ pair is not. See examples.
 
 Matrix of order k, where k is the number of columns in x. 
 Values in a matrix represent the number
-of pairs between columns/variables in x. If margin=TRUE, the number of columns is k + 1 and the
-last column represents the cumulative number of pairing all variables.
+of pairs between columns/variables in x. If margin=TRUE, the number of columns is k + 1 and the last column represents the cumulative number of pairing all variables.
 Author(s)
 Gregor Gorjanc
 See Also
@@ -2045,8 +1584,7 @@ as(x)
 c(..., recursive=FALSE)
 ## S3 method for class 'object_sizes'
 format(x, humanReadable=getOption("humanReadable"), standard="IEC", units,
-digits=1, width=NULL, sep=" ", justify = c("right", "left"),
-...)
+digits=1, width=NULL, sep=" ", justify = c("right", "left"), ...)
 ## S3 method for class 'object_sizes'
 print(x, quote=FALSE, humanReadable=getOption("humanReadable"),
 standard="IEC", units, digits=1, width=NULL, sep=" ",
@@ -2055,11 +1593,11 @@ justify = c("right", "left"), ...)
 </code></pre>
 #### Arguments
 
-... object.size: R objects; print and format: arguments to be passed to other methods.
-x output from object.size
-quote logical, indicating whether or not the result should be printed with surrounding quotes.
-humanReadable logical, use the “human readable” format.
-standard,units,digits,width,sep,justify
+* ... object.size: R objects; print and format: arguments to be passed to other methods.
+* x output from object.size
+* quote logical, indicating whether or not the result should be printed with surrounding quotes.
+* humanReadable logical, use the “human readable” format.
+* standard,units,digits,width,sep,justify
 See the man page for humanReadable.
 recursive
 See the man page for c.42
@@ -2134,18 +1672,15 @@ method=c("csv","tsv","tab"), perl="perl")
 </code></pre>
 #### Arguments
 
-xls path to the Microsoft Excel file. Supports "http://", "https://", and "ftp://" URLS.
-sheet name or number of the worksheet to read
+* xls path to the Microsoft Excel file. Supports "http://", "https://", and "ftp://" URLS.
+* sheet name or number of the worksheet to read
 * ``verbose``: logical flag indicating whether details should be printed as the file is processed.
-pattern if specified, them skip all lines before the first containing this string
-perl name of the perl executable to be called.
+* pattern if specified, them skip all lines before the first containing this string perl name of the perl executable to be called.
 method intermediate file format, "csv" for comma-separated and "tab" for tab-separated
 * ``na.strings``: a character vector of strings which are to be interpreted as ’NA’ values. See
 read.table for details.
-blank.lines.skip
-logical flag indicating whether blank lines in the orginal file should be ignored.
-...
-additional arguments to read.table. The defaults for read.csv() are used.44
+* blank.lines.skip logical flag indicating whether blank lines in the orginal file should be ignored.
+* ... additional arguments to read.table. The defaults for read.csv() are used.44
 read.xls
 
 #### Details
@@ -2214,9 +1749,7 @@ print(readLines(con, 2))
 file.remove(summary(con)$description)
 ## End(Not run)
 ## 
-#### Examples
-```{r}
- demonstrating selection of specific 'sheets'
+#### Examples  demonstrating selection of specific 'sheets'
 ## from the example XLS file 'ExampleExcelFile.xls'
 exampleFile <- file.path(path.package('gdata'),'xls',
 'ExampleExcelFile.xls')
@@ -2261,12 +1794,11 @@ remove.vars(data, names="", info=TRUE)
 </code></pre>
 #### Arguments
 
-data dataframe to be modified.
-from character vector containing the current name of each variable to be renamed.
-to character vector containing the new name of each variable to be renamed.
-names character vector containing the names of variables to be removed.
-info boolean value indicating whether to print details of the removal/renaming. De-
-faults to TRUE.
+* data dataframe to be modified.
+* from character vector containing the current name of each variable to be renamed.
+* to character vector containing the new name of each variable to be renamed.
+* names character vector containing the names of variables to be removed.
+* info boolean value indicating whether to print details of the removal/renaming. Defaults to TRUE.
 
 #### Value
 
@@ -2305,7 +1837,7 @@ reorder(x, X, FUN, ..., order=is.ordered(x), new.order, sort=mixedsort)
 #### Arguments
 
 * ``x``: factor
-X auxillary data vector
+* X auxillary data vector
 FUN function to be applied to subsets of X determined by x, to determine factor order
 ... optional parameters to FUN
 order logical value indicating whether the returned object should be an ordered factor
@@ -2411,7 +1943,10 @@ sample( c(10,10) )
 ## resample has the consistent behavior for both cases
 resample( c(10) )
 resample( c(10,10) )
-sheetCount
+
+```
+
+ ## sheetCount
 Count or list sheet names in Excel spreadsheet files.
 
 #### Description
@@ -2427,9 +1962,9 @@ sheetNames(xls, verbose = FALSE, perl = "perl")
 </code></pre>
 #### Arguments
 
-xls File path to spreadsheet. Supports "http://", "https://", and "ftp://" URLS.
-verbose If TRUE, show additional messages during processing.
-perl Path to perl interpreter.
+* xls File path to spreadsheet. Supports "http://", "https://", and "ftp://" URLS.
+* verbose If TRUE, show additional messages during processing.
+* perl Path to perl interpreter.
 
 #### Value
 
@@ -2452,10 +1987,13 @@ exampleFile2007 <- file.path(path.package('gdata'),'xls',
 sheetCount(exampleFile)
 if( 'XLSX' %in% xlsFormats() )
 sheetNames(exampleFile2007)
-startsWith
+
 # if XLSX is supported..
-Determine if a character string "starts with" with the specified char-
-acters.
+````
+                   
+## ``startsWith``
+                   
+Determine if a character string "starts with" with the specified characters.
 
 #### Description
 
@@ -2470,10 +2008,10 @@ startsWith(str, pattern, trim=FALSE, ignore.case=FALSE)
 #### Arguments
 
 * ``str``: character vector to test
-pattern characters to check for
-trim Logical flag indicating whether leading whitespace should be removed from str
-before testing for a match.
-ignore.case Logical flag indicating whether case should be ignored when testing for a match.
+* pattern characters to check for
+* trim Logical flag indicating whether leading whitespace should be removed from str
+* before testing for a match.
+* ignore.case Logical flag indicating whether case should be ignored when testing for a match.
 
 #### Details
 
@@ -2528,10 +2066,8 @@ recode.factor should levels of a factor be recoded, see below
 #### Details
 
 trim is a generic function, where default method does nothing, while method for character s
-trims its elements and method for factor s trims levels. There are also methods for list and
-data.frame.
-Trimming character strings can change the sort order in some locales. For factors, this can affect
-the coding of levels. By default, factor levels are recoded to match the trimmed sort order, but this
+trims its elements and method for factor s trims levels. There are also methods for list and data.frame.
+Trimming character strings can change the sort order in some locales. For factors, this can affect the coding of levels. By default, factor levels are recoded to match the trimmed sort order, but this
 can be disabled by setting recode.factor=FALSE. Recoding is done with reorder.factor.
 Values with all leading and trailing spaces removed in its elements.
 
