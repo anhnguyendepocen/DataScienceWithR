@@ -1,4 +1,13 @@
-elem
+---
+title: "``gdata::elem``"
+output: html_document
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(gdata)
+```
+
 Display Information about Elements in a Given Object
 
 #### Description
@@ -15,10 +24,10 @@ dimensions=FALSE)
 </code></pre>
 #### Arguments
 
-object object containing named elements, perhaps a model or data frame.
-unit required unit for displaying element size: "KB", "MB", "bytes", or first letter.
-digits number of decimals to display when rounding element size.
-dimensions whether element dimensions should be returned.
+* object object containing named elements, perhaps a model or data frame.
+* unit required unit for displaying element size: "KB", "MB", "bytes", or first letter.
+* digits number of decimals to display when rounding element size.
+* dimensions whether element dimensions should be returned.
 
 #### Details
 
