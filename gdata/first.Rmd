@@ -1,10 +1,18 @@
-first
-Return first or last element of an object
+---
+title: "``gdata::first``"
+output: html_document
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(gdata)
+```
+
+return first or last element of an object
 
 #### Description
 
-Return first or last element of an object. These functions are convenience wrappers for head(x, n=1, ...)
-and tail(x, n=1, ...).
+Return first or last element of an object. These functions are convenience wrappers for head(x, n=1, ...) and tail(x, n=1, ...).
 
 #### Usage
 <pre><code>
