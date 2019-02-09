@@ -1,12 +1,18 @@
+---
+title: "``gdata::getYear``"
+output: html_document
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(gdata)
+```
 
-## getYear
 Get date/time parts from date and time objects
 
 #### Description
 
-get* functions provide an *experimental* approach for extracting the date/time parts from objects
-of a date/time class. They are designed to be intiutive and thus lowering the learning curve for work
-with date and time classes in R.
+get* functions provide an *experimental* approach for extracting the date/time parts from objects of a date/time class. They are designed to be intiutive and thus lowering the learning curve for work with date and time classes in R.
 
 #### Usage
 <pre><code>
