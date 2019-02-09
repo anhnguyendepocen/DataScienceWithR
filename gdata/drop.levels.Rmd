@@ -1,5 +1,13 @@
-drop.levels
-Drop unused factor levels
+---
+title: "``gdata::drop.levels``"
+output: html_document
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(gdata)
+```
+
 
 #### Description
 
@@ -13,9 +21,9 @@ drop.levels(x, reorder=TRUE, ...)
 </code></pre>
 #### Arguments
 
-x object to be processed
-reorder should factor levels be reordered using reorder.factor?
-... additional arguments to reorder.factor
+* x object to be processed
+* reorder should factor levels be reordered using reorder.factor?
+* ... additional arguments to reorder.factor
 
 #### Details
 
