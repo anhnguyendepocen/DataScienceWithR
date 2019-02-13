@@ -1,10 +1,10 @@
+
 matchcols
 Select columns names matching certain critera
 
 #### Description
 
-This function allows easy selection of the column names of an object using a set of inclusion and
-exclusion critera.
+This function allows easy selection of the column names of an object using a set of inclusion and exclusion critera.
 
 #### Usage
 <pre><code>
@@ -14,19 +14,10 @@ matchcols(object, with, without, method=c("and","or"), ...)
 </code></pre>
 #### Arguments
 
-object Matrix or dataframe
-with, without Vector of regular expression patterns
-method One of "and" or "or"
-... Optional arguments to grep
-
-#### Value
-
-Vector of column names which match all (method="and") or any (method="or") of the patterns
-specified in with, but none of the patterns specified in without.matchcols
-Author(s)
-Gregory R. Warnes <greg@warnes.net>
-See Also
-grep
+* ``object``: Matrix or dataframe
+* ``with``, ``without``: Vector of regular expression patterns
+* ``method``: One of "and" or "or"
+* ``...``: Optional arguments to grep
 
 #### Examples
 ```{r}
@@ -71,3 +62,14 @@ method="or"
 # Get just the column which give the p-value for the intercept
 matchcols(x, with=c("Intercept", "Pr") )
 ```
+
+
+
+#### Value
+
+Vector of column names which match all (method="and") or any (method="or") of the patterns
+specified in with, but none of the patterns specified in without.matchcols
+Author(s)
+Gregory R. Warnes <greg@warnes.net>
+See Also
+grep
