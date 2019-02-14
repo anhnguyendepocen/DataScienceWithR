@@ -1,7 +1,13 @@
+---
+title: "``gdata::interleave``"
+output: html_document
+---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(gdata)
+```
 
-interleave
-Interleave Rows of Data Frames or Matrices
 
 #### Description
 
@@ -15,28 +21,11 @@ interleave(..., append.source=TRUE, sep=": ", drop=FALSE)
 </code></pre>
 #### Arguments
 
-... objects to be interleaved
-append.source Boolean Flag. When TRUE (the default) the argument name will be appended to
-the row names to show the source of each row.
+* ... objects to be interleaved
+* append.source Boolean Flag. When TRUE (the default) the argument name will be appended to the row names to show the source of each row.
 * ``sep``: Separator between the original row name and the object name.
-drop boolean flag - When TRUE, matrices containing one column will be converted
-to vectors.
+* drop boolean flag - When TRUE, matrices containing one column will be converted to vectors.
 
-#### Details
-
-This function creates a new matrix or data frame from its arguments.
-The new object will have all of the rows from the source objects interleaved. IE, it will contain row
-1 of object 1, followed by row 1 of object 2, .. row 1 of object ’n’, row 2 of object 1, row 2 of object
-2, ... row 2 of object ’n’ ...
-
-#### Value
-
-Matrix containing the interleaved rows of the function arguments.
-Author(s)
-Gregory R. Warnes <greg@warnes.net>26
-is.what
-See Also
-cbind, rbind, combine
 
 #### Examples
 ```{r}
@@ -73,3 +62,19 @@ m2 <- matrix(5:8)
 interleave(m1, m2, drop=TRUE)
 # This will be coerced to a vector
 interleave(m1, m2, drop=FALSE) # This will remain a matrix
+```
+#### Details
+
+This function creates a new matrix or data frame from its arguments.
+The new object will have all of the rows from the source objects interleaved. IE, it will contain row
+1 of object 1, followed by row 1 of object 2, .. row 1 of object ’n’, row 2 of object 1, row 2 of object
+2, ... row 2 of object ’n’ ...
+
+#### Value
+
+Matrix containing the interleaved rows of the function arguments.
+Author(s)
+Gregory R. Warnes <greg@warnes.net>26
+is.what
+See Also
+cbind, rbind, combine
