@@ -1,5 +1,13 @@
+---
+title: "``gdata::matchcols``"
+output: html_document
+---
 
-matchcols
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(gdata)
+```
+
 Select columns names matching certain critera
 
 #### Description
