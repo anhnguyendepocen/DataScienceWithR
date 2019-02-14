@@ -1,4 +1,13 @@
-humanReadable
+---
+title: "``gdata::humanReadable```"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(gdata)
+```
+
 Print Byte Size in Human Readable Format
 
 #### Description
@@ -14,16 +23,41 @@ digits=1, width=NULL, sep=" ", justify=c("right", "left") )
 </code></pre>
 #### Arguments
 
-x integer, byte size
-standard character, "IEC" for powers of 1024 (’MiB’), "SI" for powers of 1000 (’MB’),
+* x integer, byte size
+* standard character, "IEC" for powers of 1024 (’MiB’), "SI" for powers of 1000 (’MB’),
 or "Unix" for powers of 1024 (’M’). See details.
-units character, unit to use for all values (optional), one of "auto", "bytes", or an appropriate unit corresponding to standard.
-digits integer, number of digits after decimal point
-width integer, width of number string
-sep character, separator between number and unit
-justify two-element vector specifiy the alignment for the number and unit components
-of the size. Each element should be one of "none", "left", "right", or "center"22
-humanReadable
+* units character, unit to use for all values (optional), one of "auto", "bytes", or an appropriate unit corresponding to standard.
+* digits integer, number of digits after decimal point
+* width integer, width of number string
+* sep character, separator between number and unit
+* justify two-element vector specifiy the alignment for the number and unit components of the size. Each element should be one of "none", "left", "right", or "center"
+
+
+#### Examples
+```{r}
+
+# Simple example: maximum addressible size of 32 bit pointer
+humanReadable(2^32-1)
+humanReadable(2^32-1, standard="IEC")
+humanReadable(2^32-1, standard="SI")
+humanReadable(2^32-1, standard="Unix")
+humanReadable(2^32-1,
+humanReadable(2^32-1,
+humanReadable(2^32-1,
+humanReadable(2^32-1,
+unit="MiB")
+standard="IEC", unit="MiB")
+standard="SI", unit="MB")
+standard="Unix", unit="M")
+# Vector of sizes
+matrix(humanReadable(c(60810, 124141, 124, 13412513), width=4))
+matrix(humanReadable(c(60810, 124141, 124, 13412513), width=4, unit="KiB"))
+# Specify digits rather than width
+matrix(humanReadable(c(60810, 124141, 124, 13412513), width=NULL, digits=2))
+# Change the justification
+matrix(humanReadable(c(60810, 124141, 124, 13412513), width=NULL,
+justify=c("right", "right") ))
+```
 
 #### Details
 
@@ -189,29 +223,3 @@ GNU manual for coreutils: http://www.gnu.org/software/coreutils/manual/html_node
 html#Block-size
 See Also
 object.size in package ’gdata’, object.size in package ’utils’, ll
-
-#### Examples
-```{r}
-
-# Simple example: maximum addressible size of 32 bit pointer
-humanReadable(2^32-1)
-humanReadable(2^32-1, standard="IEC")
-humanReadable(2^32-1, standard="SI")
-humanReadable(2^32-1, standard="Unix")
-humanReadable(2^32-1,
-humanReadable(2^32-1,
-humanReadable(2^32-1,
-humanReadable(2^32-1,
-unit="MiB")
-standard="IEC", unit="MiB")
-standard="SI", unit="MB")
-standard="Unix", unit="M")
-# Vector of sizes
-matrix(humanReadable(c(60810, 124141, 124, 13412513), width=4))
-matrix(humanReadable(c(60810, 124141, 124, 13412513), width=4, unit="KiB"))
-# Specify digits rather than width
-matrix(humanReadable(c(60810, 124141, 124, 13412513), width=NULL, digits=2))
-# Change the justification
-matrix(humanReadable(c(60810, 124141, 124, 13412513), width=NULL,
-justify=c("right", "right") ))24
-installXLSXsupport
