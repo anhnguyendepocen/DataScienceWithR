@@ -1,3 +1,13 @@
+---
+title: "``gdata::centerText``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(gdata)
+```
+
 Center Text Strings
 
 #### Description
@@ -8,8 +18,7 @@ of spaces to each element.
 #### Usage
 <pre><code>
 
-centerText(x, width = getOption("width"))combine
-9
+centerText(x, width = getOption("width"))
 
 </code></pre>
 #### Arguments
