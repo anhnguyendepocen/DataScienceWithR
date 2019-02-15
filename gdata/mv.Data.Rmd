@@ -23,9 +23,9 @@ mv(from, to, envir = parent.frame())
 </code></pre>
 #### Arguments
 
-from Character scalar giving the source object name
-to Character scalar giving the desination object name
-envir Environment in which to do the rename
+* from Character scalar giving the source object name
+* to Character scalar giving the desination object name
+* envir Environment in which to do the rename
 
 #### Details
 
