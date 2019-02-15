@@ -1,4 +1,14 @@
-ConvertMedUnits
+---
+title: "``gdata::ConvertMedUnits``"
+output: html_document
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(gdata)
+```
+
+
 Convert medical measurements between International Standard (SI)
 and US ’Conventional’ Units.
 
