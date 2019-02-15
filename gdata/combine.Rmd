@@ -1,5 +1,13 @@
+---
+title: "``gdata::combine``"
+output: html_document
+---
 
-combine
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(gdata)
+```
+
 Combine R Objects With a Column Labeling the Source
 
 #### Description
@@ -18,8 +26,7 @@ combine(..., names=NULL)
 ...
 names
 vectors or matrices to combine.
-character vector of names to use when creating source column.10
-ConvertMedUnits
+character vector of names to use when creating source column.
 
 #### Details
 
