@@ -1,7 +1,15 @@
-Args
+---
+title: "``gdata::Args``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(gdata)
+```
+Args - 
 Describe Function 
-</code></pre>
-#### Arguments
+Arguments
 
 
 #### Description
