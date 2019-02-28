@@ -1,7 +1,5 @@
 ---
 title: "A3"
-author: "Kevin O Brien"
-date: "5 December 2018"
 output: html_document
 ---
 
@@ -10,7 +8,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(A3)
 ```
 
-housing Boston Housing Prices
+## Boston Housing Prices
 
 #### Description
 A dataset containing the prices of houses in the Boston region and a number of features. 
@@ -22,7 +20,8 @@ The dataset and the following description is based on that provided by UCI Machi
 data(housing)
 </code></pre>
 
-Details
+#### Details
+
 * CRIME: Per capita crime rate by town
 * ZN: Proportion of residential land zoned for lots over 25,000 sq.ft.
 * INDUS: Proportion of non-retail business acres per town
