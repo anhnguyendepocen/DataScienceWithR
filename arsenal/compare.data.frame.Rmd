@@ -1,5 +1,15 @@
+---
+title: "``arsenal::compare.data.frame``"
+2output: html_document
+---
 
-compare.data.frame
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(arsenal)
+```
+
+
+
 Compare two data.frames and report differences
 
 #### Description
@@ -19,13 +29,15 @@ print(x, ...)
 </code></pre>
 #### Arguments
 
-x, y
+* x, y
 A data.frame to compare
-by, by.x, by.y Which variables are IDs to merge the two data.frames? If set to "row.names",
+* by, by.x, by.y Which variables are IDs to merge the two data.frames? If set to "row.names",
 merging will occur over the row.names. If set to NULL (default), merging will
 occur row-by-row.
-control A list of control parameters from comparison.control.
-... Other arguments, passed to comparison.control when appropriate.
+* control A list of control parameters from comparison.control.
+* ... Other arguments, passed to comparison.control when appropriate.
+
+
 Author(s)
 Ethan Heinzen, adapted from code from Andrew Hanson
 See Also
