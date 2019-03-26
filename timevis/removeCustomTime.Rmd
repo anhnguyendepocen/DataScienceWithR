@@ -1,0 +1,35 @@
+removeCustomTime Remove a custom time previously added
+### ### Description
+Remove a custom time previously added
+8 removeItem
+### Usage
+removeCustomTime(id, itemId)
+#### Arguments 
+id Timeline id or a timevis object (the output from timevis())
+itemId The id of the custom time bar
+Examples
+timevis() %>%
+addCustomTime(Sys.Date() - 1, "yesterday") %>%
+addCustomTime(Sys.Date() + 1, "tomorrow") %>%
+removeCustomTime("yesterday")
+if (interactive()) {
+library(shiny)
+shinyApp(
+ui = fluidPage(
+timevisOutput("timeline"),
+actionButton("btn0", "Add custom time"),
+actionButton("btn", "Remove custom time bar")
+),
+server = function(input, output) {
+output$timeline <- renderTimevis(
+timevis()
+)
+observeEvent(input$btn0, {
+addCustomTime("timeline", Sys.Date() - 1, "yesterday")
+})
+observeEvent(input$btn, {
+removeCustomTime("timeline", "yesterday")
+})
+}
+)
+}
