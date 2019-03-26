@@ -1,0 +1,10 @@
+runExample Run examples of using timevis in a Shiny app
+### ### Description
+This example is also available online.
+### Usage
+runExample()
+Examples
+if (interactive()) {
+runExample()
+}
+10 setGroups
