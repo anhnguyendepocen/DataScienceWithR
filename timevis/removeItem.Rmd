@@ -1,0 +1,31 @@
+removeItem Remove an item from a timeline
+### ### Description
+Remove an item from a timeline
+### Usage
+removeItem(id, itemId)
+runExample 9
+#### Arguments 
+id Timeline id or a timevis object (the output from timevis())
+itemId The id of the item to remove
+Examples
+timevis(data.frame(id = 1:2, start = Sys.Date(), content = c("1", "2"))) %>%
+removeItem(2)
+if (interactive()) {
+library(shiny)
+shinyApp(
+ui = fluidPage(
+timevisOutput("timeline"),
+actionButton("btn", "Remove item 2")
+),
+server = function(input, output) {
+output$timeline <- renderTimevis(
+timevis(data.frame(
+id = 1:2, start = Sys.Date(), content = c("1", "2"))
+)
+)
+observeEvent(input$btn, {
+removeItem("timeline", 2)
+})
+}
+)
+}
