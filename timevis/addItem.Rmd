@@ -1,12 +1,23 @@
-addItem Add a single item to a timeline
+---
+title: "``addItem``:  Add a single item to a timeline"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(timeVis)
+```
+
+
 ### ### Description
 Add a single item to a timeline
 ### Usage
 addItem(id, data)
 #### Arguments 
-id Timeline id or a timevis object (the output from timevis())
-data A named list containing the item data to add.
-Examples
+* id Timeline id or a timevis object (the output from timevis())
+* data A named list containing the item data to add.
+
+#### Examples
 timevis() %>%
 addItem(list(start = Sys.Date(), content = "Today"))
 if (interactive()) {
