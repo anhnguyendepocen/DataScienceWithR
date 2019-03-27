@@ -1,4 +1,14 @@
-centerItem 5
+---
+title: "``add_scalebar``: Add scalebar to frames"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(timeVis)
+```
+
+
 centerItem Move the window such that given item or items are centered
 ### ### Description
 Move the window such that given item or items are centered
