@@ -1,13 +1,24 @@
+---
+title: "``add_scalebar``: Add scalebar to frames"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(timeVis)
+```
+
 removeCustomTime Remove a custom time previously added
 ### ### Description
 Remove a custom time previously added
-8 removeItem
+
 ### Usage
 removeCustomTime(id, itemId)
 #### Arguments 
 id Timeline id or a timevis object (the output from timevis())
 itemId The id of the custom time bar
-Examples
+
+#### Examples
 timevis() %>%
 addCustomTime(Sys.Date() - 1, "yesterday") %>%
 addCustomTime(Sys.Date() + 1, "tomorrow") %>%
