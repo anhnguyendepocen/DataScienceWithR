@@ -1,4 +1,13 @@
-timevis 15
+---
+title: "``add_scalebar``: Add scalebar to frames"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(timeVis)
+```
+
 timevis Create a timeline visualization
 ### ### Description
 timevis lets you create rich and fully interactive timeline visualizations. Timelines can be included
