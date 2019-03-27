@@ -1,27 +1,37 @@
-add_colourscale Add scale to frames
+---
+title: "``add_colourscale``:    Add scale to frames"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(moveVis)
+```
+
+
+
 #### Description
 This function adjusts the colour scales of the animation frames created with frames_spatial and
 custom map imagery.
-Usage
+
+#### Usage
 add_colourscale(frames, type, colours, labels = waiver(),
 legend_title = NULL, verbose = TRUE)
+
 #### Arguments 
-frames list of ggplot2 objects, crated with frames_spatial.
+* frames list of ggplot2 objects, crated with frames_spatial.
 type character, either "gradient" or "discrete". Must be equal to the defintion of argument r_type with which frames have been created (see frames_spatial).
-colours character, a vector of colours. If type = "discrete", number of colours must
+* colours character, a vector of colours. If type = "discrete", number of colours must
 be equal to the number of classes contained in the raster imagery with which frames have been created. Provide a named vector to associate map values with
 colours, e.g. c("1" = "red", "2" = "green", "3" = "black")
 labels character, a vector of labels with the same length as colours. Ignored, if
 type = "gradient".
-legend_title character, a legend title.
-verbose logical, if TRUE, messages on the function’s progress are displayed (default).
-Value
-List of frames.
-Author(s)
-Jakob Schwalb-Willmann
-See Also
-frames_spatial frames_graph animate_frames
+* legend_title character, a legend title.
+* verbose logical, if TRUE, messages on the function’s progress are displayed (default).
+
 #### Examples
+
+```{r}
 library(moveVis)
 library(move)
 data("move_data", "basemap_data")
@@ -52,3 +62,11 @@ colFUN <- colorRampPalette(c("orange", "lightgreen", "darkgreen"))
 cols <- colFUN(10)
 frames <- add_colourscale(frames, type = "discrete", colours = cols, legend_title = "Classes")
 frames[[100]]
+```
+
+Value
+List of frames.
+Author(s)
+Jakob Schwalb-Willmann
+See Also
+frames_spatial frames_graph animate_frames
