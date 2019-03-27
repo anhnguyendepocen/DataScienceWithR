@@ -1,3 +1,13 @@
+---
+title: "``add_scalebar``: Add scalebar to frames"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(timeVis)
+```
+
 runExample Run examples of using timevis in a Shiny app
 ### ### Description
 This example is also available online.
