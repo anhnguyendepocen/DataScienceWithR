@@ -1,3 +1,13 @@
+---
+title: "``add_scalebar``: Add scalebar to frames"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(timeVis)
+```
+
 addItems Add multiple items to a timeline
 ### ### Description
 Add multiple items to a timeline
