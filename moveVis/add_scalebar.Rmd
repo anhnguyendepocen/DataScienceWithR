@@ -1,3 +1,13 @@
+---
+title: "``add_scalebar``: Add scalebar to frames"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(moveVis)
+```
+
 add_scalebar Add scalebar to frames
 #### Description
 This function adds a scalebar to the animation frames created with frames_spatial.
@@ -5,25 +15,25 @@ Usage
 add_scalebar(frames, distance = NULL, height = 0.015,
 position = "bottomleft", x = NULL, y = NULL, colour = "black",
 label_margin = 1.2, verbose = TRUE)
+
 #### Arguments 
-frames list of ggplot2 objects, crated with frames_spatial.
-distance numeric, optional. Distance displayed by the scalebar in km. By default, the
+* frames list of ggplot2 objects, crated with frames_spatial.
+* distance numeric, optional. Distance displayed by the scalebar in km. By default, the
 displayed distance is calculated automatically.
-height numeric, height of the scalebar in a range from 0 to 1 as the proportion of the
+* height numeric, height of the scalebar in a range from 0 to 1 as the proportion of the
 overall height of the frame map. Default is 0.015.
-position character, position of the scalebar on the map. Either "bottomleft", "upperleft", "upperright", "bottomright".
+* position character, position of the scalebar on the map. Either "bottomleft", "upperleft", "upperright", "bottomright".
 Ignored, if x and y are set.
-x numeric, position of the bottom left corner of the scalebar on the x axis. If not
+* x numeric, position of the bottom left corner of the scalebar on the x axis. If not
 set, position is used to calculate the position of the scalebar.
-y numeric, position of the bottom left corner of the scalebar on the y axis. If not
+* y numeric, position of the bottom left corner of the scalebar on the y axis. If not
 set, position is used to calculate the position of the scalebar.
-colour character, colour of the distance labels. Default is "black".
-label_margin numeric, distance of the labels to the scalebar as a proportion of the height of
-the scalebar (e.g. if set to 2, the labels will be positioned with a distance to the
-scalebar of twice the scalebar height).
+* colour character, colour of the distance labels. Default is "black".
+* label_margin numeric, distance of the labels to the scalebar as a proportion of the height of
+the scalebar (e.g. if set to 2, the labels will be positioned with a distance to the scalebar of twice the scalebar height).
 verbose logical, if TRUE, messages on the function’s progress are displayed (default).
-add_text 13
-Value
+
+#### Value
 List of frames.
 Author(s)
 Jakob Schwalb-Willmann
