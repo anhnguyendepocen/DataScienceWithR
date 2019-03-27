@@ -1,5 +1,14 @@
-fitWindow 7
-fitWindow Adjust the visible window such that it fits all items
+---
+title: "``fitWindow``:  Adjust the visible window such that it fits all items"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(timeVis)
+```
+
+
 ### ### Description
 Adjust the visible window such that it fits all items
 ### Usage
@@ -8,7 +17,8 @@ fitWindow(id, options)
 id Timeline id or a timevis object (the output from timevis())
 options Named list of options controlling the animation. Most common option is "animation" = TRUE/FALSE.
 For a full list of options, see the "fit" method in the official Timeline documentation
-Examples
+
+#### Examples
 if (interactive()) {
 library(shiny)
 shinyApp(
