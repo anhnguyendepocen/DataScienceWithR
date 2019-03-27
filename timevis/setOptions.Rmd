@@ -1,5 +1,13 @@
-12 setOptions
-setOptions Update the configuration options of a timeline
+---
+title: "``setOptions``: Update the configuration options of a timeline"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(timeVis)
+```
+
 ### ### Description
 Update the configuration options of a timeline
 ### Usage
@@ -8,7 +16,8 @@ setOptions(id, options)
 id Timeline id or a timevis object (the output from timevis())
 options A named list containing updated configuration options to use. See the options
 parameter of the timevis function to see more details.
-Examples
+
+#### Examples
 timevis(
 data.frame(start = Sys.Date(), content = "Today"),
 options = list(showCurrentTime = FALSE, orientation = "top")
