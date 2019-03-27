@@ -1,5 +1,15 @@
+---
+title: "``add_scalebar``: Add scalebar to frames"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(timeVis)
+```
+
 timevisData Timevis sample data
-### ### Description
+#### Description
 A dataset containing sample time schedule data for a community center that can be rendered by
 timevis.
 ### Usage
