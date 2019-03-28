@@ -1,0 +1,560 @@
+Package ‘DataVisualizations’
+March 8, 2019
+Type Package
+Title Visualizations of High-Dimensional Data
+Version 1.1.6
+Date 2019-03-08
+Maintainer Michael Thrun <m.thrun@gmx.net>
+#### Description
+The flagship idea of 'DataVisualizations' is the mirrored density plot (MD-plot) which is a PDEoptimized
+violin plot for either classified or non-classified multivariate data. The MDplot
+is an alternative to the box-and-whisker diagram (box plot) and bean plot. Furthermore,
+a collection of various visualization methods for univariate data is provided.
+In the case of exploratory data analysis, 'DataVisualizations' makes it possible to inspect
+the distribution of each feature of a dataset visually through a combination of four methods.
+One of these methods is the Pareto density estimation (PDE) of the probability density function
+(pdf). Additionally, visualizations of the distribution of distances using PDE, the scatterdensity
+plot using PDE for two variables as well as the Shepard density plot and the Bland-
+Altman plot are presented here. Pertaining to classified high-dimensional data, a number of visualizations
+are described, such as f.ex. the heat map and silhouette plot. A political
+map of the world or Germany can be visualized with the additional information defined
+by a classification of countries or regions. By extending the political map further, an uncomplicated
+function for a Choropleth map can be used which is useful for measurements across a geographic
+area. For categorical features, the Pie charts, slope charts and fan plots, improved
+by the ABC analysis, become usable. More detailed explanations
+are found in the book by Thrun, M.C.: ``Projection-Based Clustering through Self-
+Organization and Swarm Intelligence'' (2018) <doi:10.1007/978-3-658-20540-9>.
+License GPL-3
+Imports Rcpp (>= 0.12.12), AdaptGauss, ggplot2, sp
+Suggests plyr, akima, ggmap, reshape2, plotrix, rworldmap, rgl,
+ABCanalysis, choroplethr, gplots, dplyr, R6, parallelDist,
+knitr (>= 1.12), rmarkdown (>= 0.9), vioplot, ggExtra, plotly,
+htmlwidgets, diptest, moments, signal, DatabionicSwarm, rowr
+LinkingTo Rcpp, RcppArmadillo
+Depends R (>= 2.10)
+SystemRequirements C++11
+1
+2 R topics documented:
+LazyLoad yes
+LazyData TRUE
+URL http://www.deepbionics.org
+VignetteBuilder knitr
+BugReports https://github.com/Mthrun/DataVisualizations/issues
+NeedsCompilation yes
+Author Michael Thrun [aut, cre, cph] (<https://orcid.org/0000-0001-9542-5543>),
+Felix Pape [aut, rev],
+Onno Hansen-Goos [ctr, ctb],
+Alfred Ultsch [dtc, ctb]
+Repository CRAN
+Date/Publication 2019-03-08 12:42:42 UTC
+R topics documented:
+DataVisualizations-package . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+categoricalVariable . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+Choroplethmap . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+ChoroplethPostalCodesAndAGS_Germany . . . . . . . . . . . . . . . . . . . . . . . . 10
+ClassBoxplot . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+ClassMDplot . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+ClassPDEplot . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+ClassPDEplotMaxLikeli . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+Classplot . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+Crosstable . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+DefaultColorSequence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+DualaxisClassplot . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+DualaxisLinechart . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+Fanplot . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+GoogleMapsCoordinates . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+Heatmap . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+HeatmapColors . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+inPSphere2D . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+InspectBoxplots . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+InspectDistances . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+InspectScatterplots . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+InspectStandardization . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+InspectVariable . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+ITS . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+Lsun3D . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+MAplot . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
+MDplot . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+MDplot4multiplevectors . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 37
+MTY . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+DataVisualizations-package 3
+PDEplot . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+PDEscatter . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 42
+Piechart . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 44
+Pixelmatrix . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 45
+Plot3D . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 46
+PlotMissingvalues . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 48
+PlotProductratio . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 49
+PmatrixColormap . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 50
+QQplot . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 50
+Sheparddiagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 51
+ShepardPDEscatter . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 52
+SignedLog . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 53
+Silhouetteplot . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 54
+Slopechart . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 55
+StatPDEdensity . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 57
+stat_pde_density . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 58
+Worldmap . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 60
+world_country_polygons . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 61
+zplot . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 148
+Index 149
+DataVisualizations-package
+Visualizations of High-Dimensional Data
+#### Description
+The flagship idea of ’DataVisualizations’ is the mirrored density plot (MD-plot) which is a PDEoptimized
+violin plot for either classified or non-classified multivariate data. The MD-plot is an
+alternative to the box-and-whisker diagram (box plot) and bean plot. Furthermore, a collection of
+various visualization methods for univariate data is provided. In the case of exploratory data analysis,
+’DataVisualizations’ makes it possible to inspect the distribution of each feature of a dataset
+visually through a combination of four methods. One of these methods is the Pareto density estimation
+(PDE) of the probability density function (pdf). Additionally, visualizations of the distribution
+of distances using PDE, the scatter-density plot using PDE for two variables as well as
+the Shepard density plot and the Bland-Altman plot are presented here. Pertaining to classified
+high-dimensional data, a number of visualizations are described, such as f.ex. the heat map and
+silhouette plot. A political map of the world or Germany can be visualized with the additional information
+defined by a classification of countries or regions. By extending the political map further,
+an uncomplicated function for a Choropleth map can be used which is useful for measurements
+across a geographic area. For categorical features, the Pie charts, slope charts and fan plots, improved
+by the ABC analysis, become usable. More detailed explanations are found in the book
+by Thrun, M.C.: "Projection-Based Clustering through Self-Organization and Swarm Intelligence"
+(2018) <doi:10.1007/978-3-658-20540-9>.
+4 DataVisualizations-package
+Details
+For a brief introduction to DataVisualizations please see the vignette A Quick Tour in Data Visualizations.
+Please see http://www.deepbionics.org/. Depending on the context please cite either [Thrun,
+2018] regarding visualizations in the context of clustering or [Thrun/Ultsch, 2018] for other visualizations.
+For the Mirrored Density Plot (PDE optimized violin plot) please cite [Thrun et al.,2018].
+Index of help topics:
+ChoroplethPostalCodesAndAGS_Germany
+Postal Codes and AGS of Germany for a
+Choropleth Map
+Choroplethmap Plot the Choropleth Map
+ClassBoxplot Creates Boxplot plot for all classes
+ClassMDplot Class MD-plot for Data w.r.t. all classes
+ClassPDEplot PDE Plot for all classes
+ClassPDEplotMaxLikeli Create PDE plot for all classes with maximum
+likelihood
+Classplot Classplot
+Crosstable Crosstable plot
+DataVisualizations-package
+Visualizations of High-Dimensional Data
+DefaultColorSequence Default color sequence for plots
+DualaxisClassplot Dualaxis Classplot
+DualaxisLinechart DualaxisLinechart
+Fanplot The fan plot
+GoogleMapsCoordinates Google Maps with marked coordinates
+Heatmap Heatmap for Clustering
+HeatmapColors Default color sequence for plots
+ITS Income Tax Share
+InspectBoxplots Enables to Insptecd the Boxplots for Multiple
+variables
+InspectDistances Inspection of Distance-Distribution
+InspectScatterplots Pairwise scatterplots and optimal histograms
+InspectStandardization
+QQplot of Data versus Normalized Data
+InspectVariable Visualization of Distribution of one variable
+Lsun3D Lsun3D inspired by FCPS
+MAplot Minus versus Add plot
+MDplot Mirrored Density plot (MD-plot)
+MDplot4multiplevectors
+Mirrored Density plot (MD-plot)for Multiple
+Vectors
+MTY Muncipal Income Tax Yield
+PDEplot PDE plot
+PDEscatter Scatter Density Plot
+Piechart The pie chart
+DataVisualizations-package 5
+Pixelmatrix Plot of a Pixel Matrix
+Plot3D 3D plot of points
+PlotMissingvalues Plot of the Amount Of Missing Values
+PlotProductratio Product-Ratio Plot
+PmatrixColormap P-Matrix colors
+QQplot QQplot with a Linear Fit
+ShepardPDEscatter Shepard PDE scatter
+Sheparddiagram Draws a Shepard Diagram
+SignedLog Signed Log
+Silhouetteplot Silhouette plot of classified data.
+Slopechart Slope Chart
+StatPDEdensity Pareto Density Estimation
+Worldmap plots a world map by country codes
+categoricalVariable A categorical Feature.
+inPSphere2D 2D data points in Pareto Sphere
+stat_pde_density Calculate Pareto density estimation for ggplot2
+plots
+world_country_polygons
+world_country_polygons
+zplot Plotting for 3 dimensional data
+Author(s)
+Michael Thrun, Felix Pape, Onno Hansen-Goos, Alfred Ultsch
+Maintainer: Michael Thrun <m.thrun@gmx.net>
+References
+[Thrun, 2018] Thrun, M. C.: Projection Based Clustering through Self-Organization and Swarm
+Intelligence, doctoral dissertation 2017, Springer, Heidelberg, ISBN: 978-3-658-20539-3, https:
+//doi.org/10.1007/978-3-658-20540-9, 2018.
+[Thrun/Ultsch, 2018] Thrun, M. C., & Ultsch, A. : Effects of the payout system of income taxes
+to municipalities in Germany, in Papiez, M. & Smiech„ S. (eds.), Proc. 12th Professor Aleksander
+Zelias International Conference on Modelling and Forecasting of Socio-Economic Phenomena, pp.
+533-542, Cracow: Foundation of the Cracow University of Economics, Cracow, Poland, 2018.
+[Thrun et al.,2018] Thrun, M. C., Pape, F., & Ultsch, A. : Benchmarking Cluster Analysis Methods
+using PDE-Optimized Violin Plots, Proc. European Conference on Data Analysis (ECDA),
+Paderborn, Germany, 2018.
+Examples
+data("Lsun3D")
+Data=Lsun3D$Data
+Pixelmatrix(Data)
+6 categoricalVariable
+InspectDistances(as.matrix(dist(Data)))
+data("ITS")
+data("MTY")
+Inds=which(ITS<900&MTY<8000)
+plot(ITS[Inds],MTY[Inds],main='Bimodality is not visible in normal scatter plot')
+PDEscatter(ITS[Inds],MTY[Inds],xlab = 'ITS in EUR',
+ylab ='MTY in EUR' ,main='Pareto Density Estimation indicates Bimodality' )
+MAlist=MAplot(ITS,MTY)
+data("Lsun3D")
+Cls=Lsun3D$Cls
+Data=Lsun3D$Data
+#clear cluster structure
+plot(Data[,1:2],col=Cls)
+#However, the silhouette plot does not indicate a very good clustering in cluster 1 and 2
+Silhouetteplot(Data,Cls = Cls)
+Heatmap(as.matrix(dist(Data)),Cls = Cls)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+inPSphere2D 2D data points in Pareto Sphere
+#### Description
+This function determines the 2D data points inside a ParetoSphere with ParetoRadius.
+#### Usage
+inPSphere2D(data, paretoRadius=NULL)
+#### Arguments
+data numeric matrix of data.
+paretoRadius numeric value. radius of P-spheres. If not given, calculate by the function ’paretoRad’
+InspectBoxplots 27
+Value
+numeric vector with the number of data points inside a P-sphere with ParetoRadius.
+Author(s)
+Felix Pape
+
+
+
+InspectStandardization
+QQplot of Data versus Normalized Data
+#### Description
+Allows to inspect if standardization of data makes sense
+#### Usage
+InspectStandardization(Data, TransData, xug = -3, xog = 3, xlab = "Normal", yDataLab =
+"Data", yTransDataLab = "Trasformated Data", Symbol4Gerade = "red", main = "", ...)
+#### Arguments
+Data ...
+TransData ...
+xug ...
+xog ...
+xlab ...
+yDataLab ...
+yTransDataLab ...
+Symbol4Gerade ...
+main ...
+... ...
+Details
+...
+Value
+plot
+Author(s)
+Michael Thrun
+References
+Michael, J. R.: The stabilized probability plot, Biometrika, Vol. 70(1), pp. 11-17, 1983.
+InspectVariable 31
+InspectVariable Visualization of Distribution of one variable
+#### Description
+Enables distribution inspection by visualization as described in [Thrun, 2018] and for example used
+in
+#### Usage
+InspectVariable(Feature, N = "Feature", i = 1, xlim, ylim,
+sampleSize =1e+05, main)
+#### Arguments
+Feature [1:n] Variable/Vector of Data to be plotted
+N Optional, string, for x label
+i Optional, No. of variable/feature, an integer of the for lope
+xlim [2] Optional, range of x-axis for PDEplot
+ylim [2] Optional, range of y-axis for PDEplot
+sampleSize Optional, default(100000), sample size, if datavector is to big
+main string for the title if other than what is desribed in N
+Author(s)
+Michael Thrun
+References
+[Thrun, 2018] Thrun, M. C.: Projection Based Clustering through Self-Organization and Swarm
+Intelligence, doctoral dissertation 2017, Springer, ISBN: 978-3-658-20539-3, Heidelberg, 2018.
+[Thrun/Ultsch, 2018] Thrun, M. C., & Ultsch, A. : Effects of the payout system of income taxes
+to municipalities in Germany, in Papiez, M. & Smiech„ S. (eds.), Proc. 12th Professor Aleksander
+Zelias International Conference on Modelling and Forecasting of Socio-Economic Phenomena, pp.
+533-542, Cracow: Foundation of the Cracow University of Economics, Cracow, Poland, 2018.
+Examples
+data("ITS")
+InspectVariable(ITS,N='Income in EUR',main='ITS')
+32 Lsun3D
+ITS Income Tax Share
+#### Description
+Numerical vector of length 11194. details in [Ultsch/Behnisch, 2017; Thrun/Ultsch, 2018].
+#### Usage
+data("ITS")
+References
+[Thrun/Ultsch, 2018] Thrun, M. C., & Ultsch, A. : Effects of the payout system of income taxes
+to municipalities in Germany, in Papiez, M. & Smiech„ S. (eds.), Proc. 12th Professor Aleksander
+Zelias International Conference on Modelling and Forecasting of Socio-Economic Phenomena, pp.
+533-542, Cracow: Foundation of the Cracow University of Economics, Cracow, Poland, 2018.
+[Ultsch/Behnisch, 2017] Ultsch, A., Behnisch, M.: Effects of the payout system of income taxes to
+municipalities in Germany, Applied Geography, Vol. 81, pp. 21-31, 2017.
+Examples
+data(ITS)
+str(ITS)
+
+
+
+MAplot Minus versus Add plot
+#### Description
+Bland-Altman plot [Altman/Bland, 1983].
+#### Usage
+MAplot(x,y,islog=TRUE,densityplot=FALSE,
+main='MA-plot',xlab,ylab,Cls)
+#### Arguments
+x [1:n] numerical vector of a feature/variable
+y [1:n] another numerical vector of a feature/variable
+islog TRUE: MAplot, FALSE: M=x-y versus a=0.5(x+y)
+densityplot FALSE: Scatterplot, TRUE: density scatter plot with PDE
+main see plot
+xlab see plot
+ylab see plot
+Cls prior Classification as a numeric vector.
+Details
+Bland-Altman plot [Altman/Bland, 1983] for visual representation of genomic data or in order to
+decorrelate data.
+Value
+MA [1:n,2] Matrix of Minus component of two features and Add component of two
+features
+ggplot see ggplot2 output, if densityplot=TRUE, else NULL
+Author(s)
+Michael Thrun
+34 MDplot
+References
+[Altman/Bland, 1983] Altman D.G., Bland J.M.: Measurement in medicine: the analysis of method
+comparison studies, The Statistician, Vol. 32, p. 307-317, doi:10.2307/2987937, 1983.
+[Ultsch, 2005] Ultsch, A.: Pareto Density Estimation: A Density Estimation for Knowledge Discovery,
+Baier D.,Wernecke K.D. (Eds), In Innovations in Classification, Data Science, and Information
+Systems - Proceedings 27th Annual Conference of the German Classification Society (GfKL) 2003,
+Berlin, Heidelberg, Springer, pp, 91-100, 2005.
+Examples
+#taken from [Thrun/Ultsch, 2018]
+data("ITS")
+data("MTY")
+MAlist=MAplot(ITS,MTY)
+MDplot Mirrored Density plot (MD-plot)
+#### Description
+This function creates a MD-plot for each variable of the data matrix. The MD-plot is a visualization
+for a boxplot-like Shape of the PDF published in [Thrun/Ultsch, 2019]. It is an improvement of
+violin or so-called bean plots and posses advantages in comparison to the conventional well-known
+box plot [Thrun/Ultsch, 2019].
+#### Usage
+MDplot(Data, Names, Ordering='Default', Scaling="None",
+Fill='darkblue', RobustGaussian=TRUE, GaussianColor='magenta',
+Gaussian_lwd=1.5, BoxPlot=FALSE, BoxColor='darkred',
+MDscaling='width',Size=0.01, MinimalAmoutOfData=40,
+MinimalAmoutOfUniqueData=12,SampleSize=5e+05,OnlyPlotOutput=TRUE)
+#### Arguments
+Data [1:n,1:d] Numerical Matrix containing the n cases of d variables. Each column is
+one variable. A data.frame is automatically transformed to a numerical matrix.
+Names Optional: [1:d] Names of the variables. If missing, the columnnames of data are
+used.
+Ordering Optional: string, either Default, Columnwise, Alphabetical or Statistics.
+Please see details for explanation.
+MDplot 35
+Scaling Optional, Default is None, Percentalize, CompleteRobust, Robust or Log,
+Please see details for explanation.
+Fill Optional: string, color with which MDs are to be filled with.
+RobustGaussian Optional: If TRUE: each MDplot of a variable is overlayed with a roubustly estimated
+unimodal Gaussian distribution in the range of this variable, if statistical
+testing does not yield a significant p.value. In this case the packages moments,
+diptest and signal are required.
+GaussianColor Optional: string, color of robustly estimated gaussian, only for RobustGaussian=TRUE.
+Gaussian_lwd Optional: numerical, line width of robustly estimated gaussian, only for RobustGaussian=TRUE.
+BoxPlot Optional: If TRUE: each MDplot is overlayed with a Box-Whisker Diagram.
+BoxColor Optional: string, color of Boxplot, only for BoxPlot=TRUE.
+MDscaling Optional: if "area", all violins have the same area (before trimming the tails).
+If "count", areas are scaled proportionally to the number of observations. If
+"width" (default), all MDs have the same maximum width.
+Size Optional: numerical, linewidth of black line around the MDs.
+MinimalAmoutOfData
+Optional: numeric value defining a threshold. Below this threshold no density
+estimation is performed and a Jitter plot with a median line is drawn. Only Data
+Science experts should change this value after they understand how the density
+is estimated (see [Ultsch, 2005]).
+MinimalAmoutOfUniqueData
+Optional: numeric value defining a threshold. Below this threshold no density
+estimation and statistical testing is performed and a Jitter plot with a median
+line is drawn. Only Data Science experts should change this value after they
+understand how the density is estimated (see [Ultsch, 2005]).
+SampleSize Optional: numeric value defining a threshold. Above this threshold uniform
+sampling of finite cases is performed in order to shorten computation time.If
+rowr is not installed, uniform sampling of all cases is performed. If required,
+SampleSize=n can be set to omit this procedure.
+OnlyPlotOutput Default TRUE only a ggplot object is given back, if FALSE: Additinally Scaled
+Data and ordering are the output of this function in a list.
+Details
+In short, the MD-plot can be described as a PDE optimized violin plot. The Pareto Density Estimation
+(PDE) is an approach to estimate the probability density function (pdf) [Ultsch, 2005].
+MD plot was used in [Thrun et al.,2018] for the evaluation of stochastic clustering methods and
+used in [Thrun et al.,2018a] in order to simultaneously estimate variances of a high-dimensional
+data set. The MD-plot is in the process of beeing peer-reviewed [Thrun/Ultsch, 2019].
+Statistical testing is performed with dip.test and agostino.test.
+For the paramter Ordering the following options are possible:
+Default Ordering of plots by convex/concav/unimodal/nonunimodal shapes. In this case the signal
+is required.
+36 MDplot
+Columnwise Ordering of plots by the order of columns of Data.
+Alphabetical Ordering of plots by the order of columns of Data sorted in alphabetical order by
+column names.
+Statistics Ordering of plots depending on the logarithm of the p-vlaues of statistical testing. In
+this case the packages moments, diptest and signal are required.
+For the paramter Scaling the following options are possible:
+None No Scaling of data is done.
+Percentalize Data is scaled between zero and 100.
+CompleteRobust Data is first robustly scaled between zero and 1, then centered to zero and outliers
+are capped by a robustly formula described in the DatabionicSwarm package.
+Robust Data is robustly scaled between zero and 1 by a formula described in the Databionic-
+Swarm package.
+Log Data is transformed with a sgined log allowing for negative values to be transformed with a
+logarithm of base 10, please see SignedLog for details.
+Value
+In the default case of OnlyPlotOutput==TRUE: The ggplot object of the MD-plot.
+Otherwise for OnlyPlotOutput==FALSE: A list of
+ggplotObj The ggplot object of the MD-plot.
+Ordering The ordering of columns of data defined by Ordering.
+DataOrdered [1:n,1:d] matrix of ordered and scaled data defined by Ordering and Scaling.
+Note that the package ggExtra is not necessarily required but if given the feauture names are automatically
+rotated.
+Note
+1.) One would assume that in the first of the two following cases ggplot only adjusts the plotting
+region but:
+MDplot(MTY)+ylim(c(0,7000)) is equal to MDplot(MTY[MTY<7000]).
+This means in both cases the data is clipped and AFTERWARDS the density estimation is performed.
+2.) Because of a (sometimes) strange behavior of either ggplot2 or reshape2, numerical column
+names are changed to character by adding ’C_’.
+3.) Overlaying MD-plots with robustly estimated gaussians seldomly will yield magenta (or other
+GaussianColor) lines overlaying more than the violin plot they should overlay, because the width
+of the two plots is not the same (but I am unable to set it strictly in ggplot). In such a case just call
+the function again.
+Author(s)
+Michael Thrun, Felix Pape contributed with the idea to use ggplot2 as the basic framework.
+MDplot4multiplevectors 37
+References
+[Ultsch, 2005] Ultsch, A.: Pareto density estimation: A density estimation for knowledge discovery,
+in Baier, D.; Werrnecke, K. D., (Eds), Innovations in classification, data science, and information
+systems, Proc Gfkl 2003, pp 91-100, Springer, Berlin, 2005.
+[Thrun/Ultsch, 2019] Thrun, M. C., & Ultsch, A. : Analyzing the Fine Structure of Distributions,
+Technical Report prior to submission, Philipps-University Marburg, Germany, 2019.
+[Thrun et al.,2018a] Thrun, M. C., Breuer, L., & Ultsch, A. : Knowledge discovery from lowfrequency
+stream nitrate concentrations: hydrology and biology contributions, Proc. European
+Conference on Data Analysis (ECDA), pp. 46-47, Paderborn, Germany, 2018.
+[Thrun et al.,2018b] Thrun, M. C., Pape, F., & Ultsch, A. : Benchmarking Cluster Analysis Methods
+using PDE-Optimized Violin Plots, Proc. European Conference on Data Analysis (ECDA), p. 26,
+Paderborn, Germany, 2018.
+Examples
+x <- cbind(A = runif(20000, 1, 5), B = c(rnorm(10000,0,1),rnorm(10000,2.6,1)),
+C = c(rnorm(20000,2.5,1)),D=rpois(20000,5))
+MDplot(x)
+MDplot4multiplevectors
+Mirrored Density plot (MD-plot)for Multiple Vectors
+#### Description
+This function creates a MD-plot for multiple numerical vectors of various lenghts. The MD-plot is
+a visualization for a boxplot-like Shape of the PDF published in [Thrun/Ultsch, 2019]. It is an improvement
+of violin or so-called bean plots and posses advantages in comparison to the conventional
+well-known box plot [Thrun/Ultsch, 2019].
+#### Usage
+MDplot4multiplevectors(..., Names, Ordering='Default', Scaling="None",
+Fill='darkblue', RobustGaussian=TRUE, GaussianColor='magenta',
+Gaussian_lwd=1.5, BoxPlot=FALSE, BoxColor='darkred',
+MDscaling='width',Size=0.01, MinimalAmoutOfData=40,
+MinimalAmoutOfUniqueData=12,SampleSize=5e+05,OnlyPlotOutput=TRUE)
+38 MDplot4multiplevectors
+#### Arguments
+... Either d numerical vectors of different lengths or a list of length d where each
+element of the list is an vector of arbitrary length
+Names Optional: [1:d] Names of the the numerical vectors. If missing, the columnnames
+are mumbered.
+Ordering Optional: string, either Default, Columnwise, Alphabetical or Statistics.
+Please see details for explanation.
+Scaling Optional, Default is None, Percentalize, CompleteRobust, Robust or Log,
+Please see details for explanation.
+Fill Optional: string, color with which MDs are to be filled with.
+RobustGaussian Optional: If TRUE: each MDplot is overlayed with a roubustly estimated unimodal
+Gaussian distribution, if statistical testing does not yield a significant
+p.value. In this case the packages moments, diptest and signal are required.
+GaussianColor Optional: string, color of robustly estimated gaussian, only for RobustGaussian=TRUE.
+Gaussian_lwd Optional: numerical, line width of robustly estimated gaussian, only for RobustGaussian=TRUE.
+BoxPlot Optional: If TRUE: each MDplot is overlayed with a Box-Whisker Diagram.
+BoxColor Optional: string, color of Boxplot, only for BoxPlot=TRUE.
+MDscaling Optional: if "area", all violins have the same area (before trimming the tails).
+If "count", areas are scaled proportionally to the number of observations. If
+"width" (default), all MDs have the same maximum width.
+Size Optional: numerical, linewidth of black line around the MDs.
+MinimalAmoutOfData
+Optional: numeric value defining a threshold. Below this threshold no density
+estimation is performed and a Jitter plot with a median line is drawn. Only Data
+Science experts should change this value after they understand how the density
+is estimated (see [Ultsch, 2005]).
+MinimalAmoutOfUniqueData
+Optional: numeric value defining a threshold. Below this threshold no density
+estimation and statistical testing is performed and a Jitter plot with a median
+line is drawn. Only Data Science experts should change this value after they
+understand how the density is estimated (see [Ultsch, 2005]).
+SampleSize Optional: numeric value defining a threshold. Above this threshold uniform
+sampling of finite cases is performed in order to shorten computation time.If
+rowr is not installed, uniform sampling of all cases is performed. If required,
+SampleSize=n can be set to omit this procedure.
+OnlyPlotOutput Default TRUE only a ggplot object is given back, if FALSE: Additinally Scaled
+Data and ordering are the output of this function in a list.
+Details
+Please see MDplot for details.
+MDplot4multiplevectors 39
+Value
+In the default case of OnlyPlotOutput==TRUE: The ggplot object of the MD-plot.
+Otherwise for OnlyPlotOutput==FALSE: A list of
+ggplotObj The ggplot object of the MD-plot.
+Ordering The ordering of columns of data defined by Ordering.
+DataOrdered [1:n,1:d] matrix of ordered and scaled data defined by Ordering and Scaling.
+Note that the package ggExtra is not necessarily required but if given the feauture names are automatically
+rotated.
+Author(s)
+Michael Thrun.
+References
+[Ultsch, 2005] Ultsch, A.: Pareto density estimation: A density estimation for knowledge discovery,
+in Baier, D.; Werrnecke, K. D., (Eds), Innovations in classification, data science, and information
+systems, Proc Gfkl 2003, pp 91-100, Springer, Berlin, 2005.
+[Thrun/Ultsch, 2019] Thrun, M. C., & Ultsch, A. : Analyzing the Fine Structure of Distributions,
+Technical Report prior to submission, Philipps-University Marburg, Germany, 2019.
+[Thrun et al.,2018a] Thrun, M. C., Breuer, L., & Ultsch, A. : Knowledge discovery from lowfrequency
+stream nitrate concentrations: hydrology and biology contributions, Proc. European
+Conference on Data Analysis (ECDA), pp. 46-47, Paderborn, Germany, 2018.
+[Thrun et al.,2018b] Thrun, M. C., Pape, F., & Ultsch, A. : Benchmarking Cluster Analysis Methods
+using PDE-Optimized Violin Plots, Proc. European Conference on Data Analysis (ECDA), p. 26,
+Paderborn, Germany, 2018.
+Examples
+MDplot4multiplevectors(runif(20000, 1, 5),c(rnorm(20000,0,1),
+rnorm(20000,2.6,1)),c(rnorm(2000,2.5,1)),rpois(25000,5),
+Names=c('A','B','C','D'))
+V=list(runif(20000, 1, 5),c(rnorm(20000,0,1),
+rnorm(20000,2.6,1)),c(rnorm(2000,2.5,1)),rpois(25000,5))
+MDplot4multiplevectors(V,Names=c('A','B','C','D'))
+40 PDEplot
