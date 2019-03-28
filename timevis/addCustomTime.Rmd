@@ -1,4 +1,16 @@
-addCustomTime Add a new vertical bar at a time point that can be dragged by the user
+---
+title: "``addCustomTime``:  Add a new vertical bar at a time point that can be dragged by the user"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(timeVis)
+```
+
+
+
+
 ### ### Description
 Add a new vertical bar at a time point that can be dragged by the user
 ### Usage
