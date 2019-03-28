@@ -1,12 +1,23 @@
+---
+title: "``setGroups``:  Set the groups of a timeline"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(timeVis)
+```
+
 setGroups Set the groups of a timeline
 ### ### Description
 Set the groups of a timeline
 ### Usage
 setGroups(id, data)
 #### Arguments 
-id Timeline id or a timevis object (the output from timevis())
-data A dataframe containing the groups data to use.
-Examples
+* id Timeline id or a timevis object (the output from timevis())
+* data A dataframe containing the groups data to use.
+
+#### Examples
 timevis(data = data.frame(
 start = c(Sys.Date(), Sys.Date(), Sys.Date() + 1, Sys.Date() + 2),
 content = c("one", "two", "three", "four"),
