@@ -1,17 +1,24 @@
-14 setWindow
-setWindow Set the current visible window
+---
+title: "``setWindow``:  Set the current visible window"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(timeVis)
+```
+
 ### ### Description
 Set the current visible window
 ### Usage
 setWindow(id, start, end, options)
 #### Arguments 
-id Timeline id or a timevis object (the output from timevis())
-start The start date/time to show in the timeline
-end The end date/time to show in the timeline
-options Named list of options controlling mainly the animation. Most common option
-is animation = TRUE/FALSE. For a full list of options, see the "setWindow"
-method in the official Timeline documentation
-Examples
+* id Timeline id or a timevis object (the output from timevis())
+* start The start date/time to show in the timeline
+* end The end date/time to show in the timeline
+* options Named list of options controlling mainly the animation. Most common option is animation = TRUE/FALSE. For a full list of options, see the "setWindow" method in the official Timeline documentation
+
+#### Examples
 timevis() %>%
 setWindow(Sys.Date() - 1, Sys.Date() + 1)
 if (interactive()) {
