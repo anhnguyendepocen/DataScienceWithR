@@ -1,15 +1,26 @@
-6 centerTime
-centerTime Move the window such that the given time is centered
+---
+title: "``centerTime``:  Move the window such that the given time is centered"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(timeVis)
+```
+
+
+
 ### ### Description
 Move the window such that the given time is centered
 ### Usage
 centerTime(id, time, options)
 #### Arguments 
-id Timeline id or a timevis object (the output from timevis())
-time The date/time to center around
-options Named list of options controlling the animation. Most common option is "animation" = TRUE/FALSE.
+* id Timeline id or a timevis object (the output from timevis())
+* time The date/time to center around
+* options Named list of options controlling the animation. Most common option is "animation" = TRUE/FALSE.
 For a full list of options, see the "moveTo" method in the official Timeline documentation
-Examples
+
+#### Examples
 timevis() %>%
 centerTime(Sys.Date() - 1)
 if (interactive()) {
