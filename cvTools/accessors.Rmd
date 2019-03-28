@@ -1,4 +1,14 @@
-accessors Access or set information on cross-validation results
+---
+title: "``accessors``:  Access or set information on cross-validation results"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(cvTools)
+```
+
+
 
 #### Description 
 
