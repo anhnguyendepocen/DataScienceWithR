@@ -1,9 +1,21 @@
+---
+title: "``DataVisualizations::``"
+output: html_document
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(DataVisualizations)
+```
 categoricalVariable A categorical Feature.
 #### Description
 Character vector of length 391029 with five different labels.
 #### Usage
 data("categoricalVariable")
-Examples
+
+#### Examples
 data(categoricalVariable)
 unique(categoricalVariable)
 Choroplethmap 7
