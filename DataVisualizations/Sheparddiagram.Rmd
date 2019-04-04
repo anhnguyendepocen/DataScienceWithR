@@ -1,3 +1,14 @@
+---
+title: "``DataVisualizations::Sheparddiagram``"
+output: html_document
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(DataVisualizations)
+```
 Sheparddiagram Draws a Shepard Diagram
 #### Description
 This function plots a Shepard diagram which is a scatter plot of InputDist and OutputDist
