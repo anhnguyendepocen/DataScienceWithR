@@ -1,3 +1,14 @@
+---
+title: "``DataVisualizations::Piechart``"
+output: html_document
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(DataVisualizations)
+```
 Piechart The pie chart
 #### Description
 the pie chart represents amount of values given in data.
