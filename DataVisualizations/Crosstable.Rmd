@@ -1,3 +1,15 @@
+---
+title: "``DataVisualizations::Crosstable``"
+output: html_document
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(DataVisualizations)
+```
+
 Crosstable Crosstable plot
 #### Description
 Presents a heatmap with values and a cross table of given Data matrix of two features and a bin
@@ -15,26 +27,19 @@ from
 xbins [1:k] start of k bins as a vector generated with seq of the first feature of data.
 Default setting assumes percentiled values between zero and 100.
 ybins [1:k] start of k bins as a vector generated with seq of the second feature of data.
-Normally the same for both features, other settings are only possible if the length
-k is equal.
+Normally the same for both features, other settings are only possible if the length k is equal.
 * NormalizationFactor
 Optional, Data feautures can be seen as regular time series, e.g. 1 measurement
-for a minute, in this case it is useful to normalize the output, e.g. to hours, then
-NormalizationFactor=60
-PlotIt Optional, Plots the heatmap if TRUE. The first feature is on the x-axis (left to
-right) and the second on y-axis (bottom to top).
+for a minute, in this case it is useful to normalize the output, e.g. to hours, then NormalizationFactor=60
+PlotIt Optional, Plots the heatmap if TRUE. The first feature is on the x-axis (left to right) and the second on y-axis (bottom to top).
 main In case of for PlotIt=TRUE: title of plot, see title
-* PlotText In case of for PlotIt=TRUE: Default TRUE: plots text in heatmap with the values
-of the crosstable
-* TextDigits In case of for TextDigits=TRUE: integer indicating the number of decimal places
-to use in round.
-
+* PlotText In case of for PlotIt=TRUE: Default TRUE: plots text in heatmap with the values of the crosstable
+* TextDigits In case of for TextDigits=TRUE: integer indicating the number of decimal places to use in round.
 * TextProbs In case of for TextDigits=TRUE: [1:2] numeric vector of two probabilities defining the thresholds for white text to grey text and grey text to black text, e.g. below
 the first threshold (Default 0.05) all values (5% of values) will be printed in white because the lowest values of the heatmap are blue. The second value of 0.95 works well if cross table has many zeros; uses quantile internally.
-Details
-The interval in each bin is closed to the left and opened to the right. The cross table can be seen as
-a two-dimensional histogram. The idea to add histograms to the table is taken from [Charpentier.
-2014].
+
+#### Details
+The interval in each bin is closed to the left and opened to the right. The cross table can be seen as a two-dimensional histogram. The idea to add histograms to the table is taken from [Charpentier.2014].
 
 #### Examples
 ```{r}
