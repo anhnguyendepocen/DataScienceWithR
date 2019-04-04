@@ -1,3 +1,15 @@
+---
+title: "``DataVisualizations::ShepardPDEscatter``"
+output: html_document
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(DataVisualizations)
+```
+
 ShepardPDEscatter Shepard PDE scatter
 #### Description
 Draws ein Shepard Diagram (scatterplot of distances) with an two-dimensional PDE density estimation
