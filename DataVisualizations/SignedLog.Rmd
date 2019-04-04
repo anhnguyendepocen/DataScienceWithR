@@ -1,3 +1,14 @@
+---
+title: "``DataVisualizations::``"
+output: html_document
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(DataVisualizations)
+```
 SignedLog Signed Log
 #### Description
 Computes the Signed Log if Data
