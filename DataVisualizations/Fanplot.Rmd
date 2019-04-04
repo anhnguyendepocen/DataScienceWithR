@@ -1,3 +1,14 @@
+---
+title: "``DataVisualizations::Fanplot``"
+output: html_document
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(DataVisualizations)
+```
 Fanplot The fan plot
 
 #### Description
