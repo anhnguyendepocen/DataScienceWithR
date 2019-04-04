@@ -1,3 +1,15 @@
+---
+title: "``DataVisualizations::InspectBoxplots``"
+output: html_document
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(DataVisualizations)
+```
+
 InspectBoxplots Enables to Insptecd the Boxplots for Multiple variables
 
 #### Description
