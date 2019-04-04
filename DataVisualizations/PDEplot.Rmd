@@ -1,14 +1,26 @@
+---
+title: "``DataVisualizations::PDEplot``"
+output: html_document
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(DataVisualizations)
+```
+
 PDEplot PDE plot
 #### Description
-This function plots the Pareto probability density estimation (PDE), uses PDEstimationForGauss
-and ParetoRadius.
+This function plots the Pareto probability density estimation (PDE), uses PDEstimationForGauss and ParetoRadius.
 #### Usage
+<pre><code>
 PDEplot(data, paretoRadius = 0, weight = 1, kernels = NULL,
         LogPlot = F, PlotIt = TRUE, title =
           "ParetoDensityEstimation(PDE)", color = "blue",
         xpoints = FALSE, xlim, ylim, xlab = "Data", ylab =
           "PDE", ggPlot = ggplot(), sampleSize = 2e+05, lwd = 2)
-PDEplot 41
+</code></pre>
 #### Arguments
 data numeric vector, data to be plotted.
 paretoRadius numeric, the Pareto Radius. If omitted, calculate by paretoRad.
@@ -28,6 +40,17 @@ to it. Default: empty plot
 sampleSize default(200000), sample size, if datavector is to big
 lwd linewidth, see plot
 
+
+#### Examples
+x <- rnorm(1000, mean = 0.5, sd = 0.5)
+y <- rnorm(750, mean = -0.5, sd = 0.75)
+plt <- PDEplot(x, color = "red")$ggPlot
+plt <- PDEplot(y, color = "blue", ggPlot = plt)$ggPlot
+# Second Example
+# ggplotObj=ggplot()
+# for(i in 1:length(Variables))
+# ggplotObj=PDEplot(Data[,i],ggPlot = ggplotObj)$ggPlot
+
 #### Value
 kernels numeric vector. The x points of the PDE function.
 paretoDensity numeric vector, the PDE(x).
@@ -41,12 +64,3 @@ Wernecke K.D. (Eds), In Innovations in Classification, Data Science, and Informa
   Proceedings 27th Annual Conference of the German Classification Society (GfKL) 2003, Berlin,
 Heidelberg, Springer, pp, 91-100, 2005.
 42 PDEscatter
-Examples
-x <- rnorm(1000, mean = 0.5, sd = 0.5)
-y <- rnorm(750, mean = -0.5, sd = 0.75)
-plt <- PDEplot(x, color = "red")$ggPlot
-plt <- PDEplot(y, color = "blue", ggPlot = plt)$ggPlot
-# Second Example
-# ggplotObj=ggplot()
-# for(i in 1:length(Variables))
-# ggplotObj=PDEplot(Data[,i],ggPlot = ggplotObj)$ggPlot
