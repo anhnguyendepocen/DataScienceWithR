@@ -1,21 +1,35 @@
+---
+title: "``DataVisualizations::PDEscatter``"
+output: html_document
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(DataVisualizations)
+```
+
 PDEscatter Scatter Density Plot
 #### Description
 Pareto density estimation (PDE) [Ultsch, 2005] used for a scatter density plot.
 #### Usage
+<pre><code>
 PDEscatter(x, y, na.rm = FALSE, paretoRadius = 0, sampleSize =
              round(sqrt(5e+08), -3), NrOfContourLines = 20, Plotter
            = "native", DrawTopView = T, xlab = "X", ylab = "Y",
            main = "PDEscatter", xlim, ylim, Legendlab_ggplot =
              "value")
+</code></pre>
 #### Arguments
-x Numeric vector, first feature (for x axis values)
-y Numeric vector, second feature (for y axis values)
-na.rm Function may not work with non finite values. If these cases should be automatically
+* x Numeric vector, first feature (for x axis values)
+* y Numeric vector, second feature (for y axis values)
+* na.rm Function may not work with non finite values. If these cases should be automatically
 removed, set parameter TRUE
-paretoRadius Numeric, the Pareto Radius. If omitted (or 0), calculate by paretoRad.
+* paretoRadius Numeric, the Pareto Radius. If omitted (or 0), calculate by paretoRad.
 sampleSize Numeric, maximum size of the sample used for calculation. High values increase
 runtime significantly.
-NrOfContourLines
+* NrOfContourLines
 Numeric, number of contour lines to be drawn. 20 by default.
 Plotter String, name of the plotting backend to use. Possible values are: "native", "ggplot",
 "plotly"
