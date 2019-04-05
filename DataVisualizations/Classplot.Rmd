@@ -1,8 +1,20 @@
+
+---
+title: "``DataVisualizations::Classplot``"
+output: html_document
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(DataVisualizations)
+```
+
 Classplot Classplot
 #### Description
-Allows to plot one time series or feauture with a classification as a labeled scatter plot with a line.
-The colors are the labels defined by the classification. Usefull to see if temporal clustering has time
-dependent variations and for Hidden Markov Models (see Mthrun/RHmm on GitHub).
+Allows to plot one time series or feauture with a classification as a labeled scatter plot with a line. The colors are the labels defined by the classification. Usefull to see if temporal clustering has time dependent variations and for Hidden Markov Models (see Mthrun/RHmm on GitHub).
+
 #### Usage
 <pre><code>
 Classplot(X, Y, Cls,
