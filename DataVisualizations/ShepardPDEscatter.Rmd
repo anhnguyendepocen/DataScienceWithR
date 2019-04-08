@@ -24,20 +24,15 @@ ShepardPDEscatter(InputDists, OutputDists, Plotter = "native",
 
 #### Arguments
 
-* InputDists [1:n,1:n] with n cases of data in d variables/features: Matrix containing the distances
+* ``InputDists``: [1:n,1:n] with n cases of data in d variables/features: Matrix containing the distances
 of the inputspace.
-* OutputDists [1:n,1:n] with n cases of data in d dimensionalites of the projection method
-* variables/features: Matrix containing the distances of the outputspace.
-* xlab Label of the x axis in the resulting Plot.
-* ylab Label of the y axis in the resulting Plot.
-* Plotter see PDEscatter for details
-* main Title of the Shepard diagram
-* sampleSize Optional, default(50000), reduces a.ount of data for density estimation, if too many distances given
-
-#### References
-
-[Thrun, 2018] Thrun, M. C.: Projection Based Clustering through Self-Organization and Swarm
-Intelligence, doctoral dissertation 2017, Springer, ISBN: 978-3-658-20540-9, Heidelberg, 2018.
+* ``OutputDists``: [1:n,1:n] with n cases of data in d dimensionalites of the projection method
+* ``variables/features``: Matrix containing the distances of the outputspace.
+* ``xlab``: Label of the x axis in the resulting Plot.
+* ``ylab``: Label of the y axis in the resulting Plot.
+* ``Plotter``: see PDEscatter for details
+* ``main``: Title of the Shepard diagram
+* ``sampleSize``: Optional, default(50000), reduces a.ount of data for density estimation, if too many distances given
 
 #### Examples
 ```{r}
@@ -51,8 +46,13 @@ ProjectedPoints = as.matrix(res$points)
 ShepardPDEscatter(InputDist,as.matrix(dist(ProjectedPoints)),main = 'MDS')
 ```
 
-SignedLog 53
-Details
+#### References
+
+[Thrun, 2018] Thrun, M. C.: Projection Based Clustering through Self-Organization and Swarm
+Intelligence, doctoral dissertation 2017, Springer, ISBN: 978-3-658-20540-9, Heidelberg, 2018.
+
+#### Details
 Introduced and described in [Thrun, 2018, p. 63] with examples in [Thrun, 2018, p. 71-72]
-Author(s)
+
+#### Author(s)
 Michael Thrun
