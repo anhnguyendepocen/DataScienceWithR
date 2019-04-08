@@ -1,3 +1,8 @@
+---
+title: "arsenal::write2"
+output: html_document
+---
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(arsenal)
@@ -6,8 +11,7 @@ write2
 
 #### Description
 
-Functions to output tables to a single document. (Also the S3 backbone behind the write2* func-
-tions.)
+Functions to output tables to a single document. (Also the S3 backbone behind the write2* functions.)
 
 #### Usage
 <pre><code>
@@ -71,22 +75,6 @@ write2.list.
 FUN The summary-like or print-like function to use to generate the markdown con-
 tent. Can be passed as a function or a character string. It’s expected that
 FUN(object, ...) looks "good" when put directly in a .Rmd file.
-Details
-write2 is an S3 method. The default prints the object (using print) inside a section surrounded by three back ticks. See verbatim for details.
-There are methods implemented for tableby, modelsum, and freqlist, all of which use the summary function. There are also methods compatible with kable, xtable, and pander_return.write2.internal
-47
-Another option is to coerce an object using verbatim() to print out the results monospaced (as if they were in the terminal). To output multiple tables into a document, simply make a list of them and
-call the same function as before. Finally, to output code chunks to be evaluated, use code.chunk.
-For more information, see vignette("write2").
-
-#### Value
-
-object is returned invisibly, and file is written.
-Author(s)
-Ethan Heinzen, adapted from code from Krista Goergen
-See Also
-write2word, write2pdf, write2html, render, word_document, html_document, pdf_document,
-rtf_document, md_document, odt_document
 
 #### Examples
 ```{r}
@@ -109,3 +97,19 @@ tempfile(fileext = ".html"),
 quite = TRUE)
 ```
 
+Details
+write2 is an S3 method. The default prints the object (using print) inside a section surrounded by three back ticks. See verbatim for details.
+There are methods implemented for tableby, modelsum, and freqlist, all of which use the summary function. There are also methods compatible with kable, xtable, and pander_return.write2.internal
+47
+Another option is to coerce an object using verbatim() to print out the results monospaced (as if they were in the terminal). To output multiple tables into a document, simply make a list of them and
+call the same function as before. Finally, to output code chunks to be evaluated, use code.chunk.
+For more information, see vignette("write2").
+
+#### Value
+
+object is returned invisibly, and file is written.
+Author(s)
+Ethan Heinzen, adapted from code from Krista Goergen
+See Also
+write2word, write2pdf, write2html, render, word_document, html_document, pdf_document,
+rtf_document, md_document, odt_document
