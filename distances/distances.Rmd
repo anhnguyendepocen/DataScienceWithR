@@ -1,6 +1,17 @@
+---
+title: "``is.distances``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(distances)
+```
+
 distances
 Constructor for distance metric objects
-Description
+
+##### Description
 distances constructs a distance metric for a set of points. Currently, it only creates Euclidean dis-
 tances. It can, however, create distances in any linear projection of Euclidean space. In other words,
 Mahalanobis distances or normalized Euclidean distances are both possible. It is also possible to
@@ -65,6 +76,9 @@ my_distances1 <- distances(my_data_points)
 my_distances2 <- distances(my_data_points,
 dist_variables = "x")4
 distances
+```
+
+```{r}
 # Mahalanobis distances
 my_distances3 <- distances(my_data_points,
 normalize = "mahalanobize")
@@ -75,6 +89,10 @@ normalize = my_norm_mat)
 # Give "x" twice the weight compared to "y"
 my_distances5 <- distances(my_data_points,
 weights = c(2, 1))
+
+```
+
+```{r}
 # Use normalization and weighting
 my_distances6 <- distances(my_data_points,
 normalize = "mahalanobize",
@@ -84,6 +102,9 @@ my_data_points_withID <- data.frame(my_data_points,
 my_ids = letters[1:10])
 my_distances7 <- distances(my_data_points_withID,
 id_variable = "my_ids")
+```
+
+```{r}
 # Compare to standard R functions
 all.equal(as.matrix(my_distances1), as.matrix(dist(my_data_points)))
 # > TRUE
@@ -99,13 +120,16 @@ tmp_data_points <- as.matrix(my_data_points)
 tmp_data_points[, 1] <- sqrt(2) * tmp_data_points[, 1]
 all.equal(as.matrix(my_distances5), as.matrix(dist(tmp_data_points)))
 # > TRUE
+```
+
+```{r}
 tmp_data_points <- as.matrix(my_data_points)
 tmp_cov_mat <- var(tmp_data_points)
 tmp_data_points[, 1] <- sqrt(2) * tmp_data_points[, 1]
 tmp_distances <- sqrt(mahalanobis(tmp_data_points,
 tmp_data_points[1, ],
 tmp_cov_mat))
-names(tmp_distances) <- 1:10distance_columns
+names(tmp_distances) <- 1:10
 
 all.equal(as.matrix(my_distances6)[1, ], tmp_distances)
 # > TRUE

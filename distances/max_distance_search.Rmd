@@ -10,7 +10,7 @@ library(distances)
 
 
 #### Description
-max_distance_search searches for the data point furthest from a set of query points.
+``max_distance_search`` searches for the data point furthest from a set of query points.
 
 #### Usage
 <pre><code>
@@ -25,7 +25,7 @@ max_distance_search(distances, query_indices = NULL, search_indices = NULL)
 #### Value
 
 An integer vector with point indices for the data point furthest from each query.
-nearest_neighbor_search
+
 
 
 ```{r}
