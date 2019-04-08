@@ -10,12 +10,13 @@ library(DataVisualizations)
 ```
 
 MDplot Mirrored Density plot (MD-plot)
+
 #### Description
-This function creates a MD-plot for each variable of the data matrix. The MD-plot is a visualization
-for a boxplot-like Shape of the PDF published in [Thrun/Ultsch, 2019]. It is an improvement of
-violin or so-called bean plots and posses advantages in comparison to the conventional well-known
-box plot [Thrun/Ultsch, 2019].
+
+This function creates a MD-plot for each variable of the data matrix. The MD-plot is a visualization for a boxplot-like Shape of the PDF published in [Thrun/Ultsch, 2019]. It is an improvement of violin or so-called bean plots and posses advantages in comparison to the conventional well-known box plot [Thrun/Ultsch, 2019].
+
 #### Usage
+
 <pre><code>
 MDplot(Data, Names, Ordering='Default', Scaling="None",
 Fill='darkblue', RobustGaussian=TRUE, GaussianColor='magenta',
@@ -25,42 +26,31 @@ MinimalAmoutOfUniqueData=12,SampleSize=5e+05,OnlyPlotOutput=TRUE)
 </code></pre>
 
 #### Arguments
-Data [1:n,1:d] Numerical Matrix containing the n cases of d variables. Each column is
+* Data [1:n,1:d] Numerical Matrix containing the n cases of d variables. Each column is
 one variable. A data.frame is automatically transformed to a numerical matrix.
-Names Optional: [1:d] Names of the variables. If missing, the columnnames of data are
+* Names Optional: [1:d] Names of the variables. If missing, the columnnames of data are
 used.
-Ordering Optional: string, either Default, Columnwise, Alphabetical or Statistics.
-Please see details for explanation.
-Scaling Optional, Default is None, Percentalize, CompleteRobust, Robust or Log,
-Please see details for explanation.
-Fill Optional: string, color with which MDs are to be filled with.
-RobustGaussian Optional: If TRUE: each MDplot of a variable is overlayed with a roubustly estimated
-unimodal Gaussian distribution in the range of this variable, if statistical
-testing does not yield a significant p.value. In this case the packages moments,
-diptest and signal are required.
+* ``Ordering`` Optional: string, either Default, Columnwise, Alphabetical or Statistics. Please see details for explanation.
+* ``Scaling`` Optional, Default is None, Percentalize, CompleteRobust, Robust or Log, Please see details for explanation.
+* ``Fill`` Optional: string, color with which MDs are to be filled with.
+* ``RobustGaussian`` Optional: If TRUE: each MDplot of a variable is overlayed with a roubustly estimated unimodal Gaussian distribution in the range of this variable, if statistical
+testing does not yield a significant p.value. In this case the packages moments, diptest and signal are required.
 GaussianColor Optional: string, color of robustly estimated gaussian, only for RobustGaussian=TRUE.
 Gaussian_lwd Optional: numerical, line width of robustly estimated gaussian, only for RobustGaussian=TRUE.
-BoxPlot Optional: If TRUE: each MDplot is overlayed with a Box-Whisker Diagram.
-BoxColor Optional: string, color of Boxplot, only for BoxPlot=TRUE.
-MDscaling Optional: if "area", all violins have the same area (before trimming the tails).
+* ``BoxPlot``: Optional: If TRUE: each MDplot is overlayed with a Box-Whisker Diagram.
+* ``BoxColor``: Optional: string, color of Boxplot, only for BoxPlot=TRUE.
+* ``MDscaling``: Optional: if "area", all violins have the same area (before trimming the tails).
 If "count", areas are scaled proportionally to the number of observations. If
 "width" (default), all MDs have the same maximum width.
-Size Optional: numerical, linewidth of black line around the MDs.
-MinimalAmoutOfData
-Optional: numeric value defining a threshold. Below this threshold no density
-estimation is performed and a Jitter plot with a median line is drawn. Only Data
-Science experts should change this value after they understand how the density
-is estimated (see [Ultsch, 2005]).
-MinimalAmoutOfUniqueData
-Optional: numeric value defining a threshold. Below this threshold no density
-estimation and statistical testing is performed and a Jitter plot with a median
-line is drawn. Only Data Science experts should change this value after they
-understand how the density is estimated (see [Ultsch, 2005]).
-SampleSize Optional: numeric value defining a threshold. Above this threshold uniform
-sampling of finite cases is performed in order to shorten computation time.If
-rowr is not installed, uniform sampling of all cases is performed. If required,
+* Size Optional: numerical, linewidth of black line around the MDs.
+* ``MinimalAmoutOfData`` Optional: numeric value defining a threshold. Below this threshold no density
+estimation is performed and a Jitter plot with a median line is drawn. Only Data Science experts should change this value after they understand how the density is estimated (see [Ultsch, 2005]).
+* ``MinimalAmoutOfUniqueData``: Optional: numeric value defining a threshold. Below this threshold no density
+estimation and statistical testing is performed and a Jitter plot with a median line is drawn. Only Data Science experts should change this value after they understand how the density is estimated (see [Ultsch, 2005]).
+* SampleSize Optional: numeric value defining a threshold. Above this threshold uniform
+sampling of finite cases is performed in order to shorten computation time. If ``rowr`` is not installed, uniform sampling of all cases is performed. If required,
 SampleSize=n can be set to omit this procedure.
-OnlyPlotOutput Default TRUE only a ggplot object is given back, if FALSE: Additinally Scaled
+* `OnlyPlotOutput``: Default TRUE only a ggplot object is given back, if FALSE: Additinally Scaled
 Data and ordering are the output of this function in a list.
 
 #### Examples
@@ -69,7 +59,8 @@ x <- cbind(A = runif(20000, 1, 5), B = c(rnorm(10000,0,1),rnorm(10000,2.6,1)),
 C = c(rnorm(20000,2.5,1)),D=rpois(20000,5))
 MDplot(x)
 ```
-Details
+
+#### Details
 In short, the MD-plot can be described as a PDE optimized violin plot. The Pareto Density Estimation
 (PDE) is an approach to estimate the probability density function (pdf) [Ultsch, 2005].
 MD plot was used in [Thrun et al.,2018] for the evaluation of stochastic clustering methods and
@@ -79,7 +70,7 @@ Statistical testing is performed with dip.test and agostino.test.
 For the paramter Ordering the following options are possible:
 Default Ordering of plots by convex/concav/unimodal/nonunimodal shapes. In this case the signal
 is required.
-36 MDplot
+
 Columnwise Ordering of plots by the order of columns of Data.
 Alphabetical Ordering of plots by the order of columns of Data sorted in alphabetical order by
 column names.
