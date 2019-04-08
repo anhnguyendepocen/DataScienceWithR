@@ -9,15 +9,19 @@ library(timeVis)
 ```
 
 
-### ### Description
+#### Description
 Add a single item to a timeline
 ### Usage
+<pre><code>
 addItem(id, data)
+</code></pre>
+
 #### Arguments 
-* id Timeline id or a timevis object (the output from timevis())
-* data A named list containing the item data to add.
+* ``id``: Timeline id or a timevis object (the output from timevis())
+* ``data``: A named list containing the item data to add.
 
 #### Examples
+```{r}
 timevis() %>%
 addItem(list(start = Sys.Date(), content = "Today"))
 if (interactive()) {
@@ -32,13 +36,13 @@ output$timeline <- renderTimevis(
 timevis()
 )
 observeEvent(input$btn, {
-4 addItems
+
 addItem("timeline", list(start = Sys.Date(), content = "Today"))
 })
 }
 )
 }
-
+```
 
 
 
