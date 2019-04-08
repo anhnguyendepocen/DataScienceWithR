@@ -53,8 +53,10 @@ tolerance functions.
 
 A logical vector of length equal to that of x and y, where TRUE denotes a difference between x and
 y, and FALSE denotes no difference between x and y.
-Author(s)
+
+#### Author(s)
 Ethan Heinzen12
 diffs
-See Also
+
+#### See Also
 comparison.control, compare.data.frame
