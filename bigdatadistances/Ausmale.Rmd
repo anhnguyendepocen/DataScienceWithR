@@ -1,3 +1,12 @@
+---
+title: "``bigdatadist::Ausmale``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(bigdatadist)
+```
 
 ## Australian Male Mortality Rates
 
@@ -14,6 +23,22 @@ Ausmale
 
 #### Format
 A list with years in the first component and a 101 times 103 matrix, years in rows and cohorts in columns, in the second component.
+
+
+```{r}
+data(Ausmale)
+
+class(Ausmale)
+
+```
+
+
+```{r}
+
+
+head(Ausmale[[2]])
+
+```
 
 #### Source
 fds
