@@ -1,4 +1,14 @@
-## ``se_auc`` 
+---
+title: "``auctestr::se_auc``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(auctestr)
+```
+
+## ``auctestr::se_auc`` 
 
 Compute standard error of AUC score, using its equivalence to the Wilcoxon statistic.
 
@@ -12,12 +22,13 @@ se_auc(auc, n_p, n_n)
 
 #### Arguments
 
-* ``auc``: value of A’ statistic (or AUC, or Area Under the Receiver operating characteristic curve) (numeric).
+* ``auc``: value of Area statistic (or AUC, or Area Under the Receiver operating characteristic curve) (numeric).
 * ``n_p``: number of positive cases (integer).
 * ``n_n``: number of negative cases (integer).
 
 
-Examples
+####Examples
+
 ```{r}
 se_auc(0.75, 20, 200)
 ## standard error decreases when data become more balanced over
@@ -31,5 +42,3 @@ se_auc(0.75, 20, 20)
 * Hanley and McNeil, The meaning and use of the area under a receiver operating characteristic (ROC) curve. Radiology (1982) 43 (1) pp. 29-36.
 * Fogarty, Baker and Hudson, Case Studies in the use of ROC Curve Analysis for Sensor-Based Estimates in Human Computer Interaction, Proceedings of Graphics Interface (2005) pp. 129-136.
 
-#### See Also
-Other fbh method: auc_compare, fbh_test
