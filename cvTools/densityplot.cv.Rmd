@@ -1,3 +1,15 @@
+---
+title: "Untitled"
+author: "Kevin O Brien"
+date: "28 August 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(cvTools)
+```
 
 densityplot.cv Kernel density plots of cross-validation results
 

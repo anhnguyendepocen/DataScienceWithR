@@ -1,3 +1,15 @@
+---
+title: "cvTools::repCV"
+author: "Kevin O Brien"
+date: "28 August 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(cvTools)
+```
 
 repCV Cross-validation for linear models
 
@@ -42,12 +54,12 @@ error for the "lmrob" and "lts" methods (see cost).
 * K an integer giving the number of groups into which the data should be split (the default is five). Keep in mind that this should be chosen such that all groups are of approximately equal size. Setting K equal to n yields leave-one-out crossvalidation.
 * R an integer giving the number of replications for repeatedK-fold cross-validation.
 This is ignored for for leave-one-out cross-validation and other non-random splits of the data.
-* foldType a character string specifying the type of folds to be generated. Possible values are "random" (the default), "consecutive" or "interleaved".
-* folds an object of class "cvFolds" giving the folds of the data for cross-validation (as returned by cvFolds). If supplied, this is preferred over K and R.
-* fit a character string specifying for which fit to estimate the prediction error. Possible values are "reweighted" (the default) for the prediction error of the reweighted fit, "raw" for the prediction error of the raw fit, or "both" for the prediction error
+* ``foldType``: a character string specifying the type of folds to be generated. Possible values are "random" (the default), "consecutive" or "interleaved".
+* ``folds``: an object of class "cvFolds" giving the folds of the data for cross-validation (as returned by cvFolds). If supplied, this is preferred over K and R.
+* ``fit``: a character string specifying for which fit to estimate the prediction error. Possible values are "reweighted" (the default) for the prediction error of the reweighted fit, "raw" for the prediction error of the raw fit, or "both" for the prediction error
 of both fits.
-* seed optional initial seed for the random number generator (see .Random.seed).
-* ... additional arguments to be passed to the prediction loss function cost.
+* ``seed``: optional initial seed for the random number generator (see .Random.seed).
+* ``...``: additional arguments to be passed to the prediction loss function cost.
 
 #### Examples 
 ```{r}
@@ -82,7 +94,8 @@ The response variable and the obtained predictions for all observations are then
 loss function cost to estimate the prediction error. For repeated cross-validation, this process
 is replicated and the estimated prediction errors from all replications as well as their average are
 included in the returned object.
-Value
+
+#### Value
 An object of class "cv" with the following components:
 n an integer giving the number of observations.
 K an integer giving the number of folds.
@@ -104,7 +117,8 @@ Note
 The repCV methods are simple wrapper functions that extract the data from the fitted model and
 call cvFit to perform cross-validation. In addition, cvLm, cvLmrob and cvLts are aliases for the
 respective methods.
-Author(s)
+
+#### Author(s)
 Andreas Alfons
 See Also
 cvFit, cvFolds, cost, lm, lmrob, ltsReg

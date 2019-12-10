@@ -1,5 +1,5 @@
 ---
-title: "``subset.cv  ``"
+title: "``cvTools::subset.cv()``"
 output: html_document
 ---
 
