@@ -1,4 +1,15 @@
-Silhouetteplot Silhouette plot of classified data.
+---
+title: "``DataVisualizations::Silhouetteplot ``"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(DataVisualizations)
+```
+
+ Silhouette plot of classified data.
 
 #### Description
 
