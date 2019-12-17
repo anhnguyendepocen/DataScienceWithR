@@ -11,15 +11,14 @@ Create multivariate data by a given factor
 
 #### Description
 
-wideByFactor modifies data.frame in such a way that variables are “separated” into several columns by factor levels.
+``wideByFactor`` modifies data.frame in such a way that variables are “separated” into several columns by factor levels.
 
 #### Usage
+
 <pre><code>
-
 wideByFactor(x, factor, common, sort=TRUE, keepFactor=TRUE)
-61
-
 </code></pre>
+
 #### Arguments
 
 * ``x``: data.frame
@@ -46,13 +45,14 @@ wideByFactor(x=tmp, factor="f1", common=c("c1", "c2"))62
 
 #### Details
 
-Given data frame is modified in such a way, that output represents a data frame with c + f + n ∗ v columns, where c is a number of common columns for all levels of a factor, f is a factor column, n is a number of levels in factor f and v is a number of variables that should be divided for each level
-of a factor. Number of rows stays the same!
+Given data frame is modified in such a way, that output represents a data frame with c + f + n ∗ v columns, where c is a number of common columns for all levels of a factor, f is a factor column, n is a number of levels in factor f and v is a number of variables that should be divided for each level of a factor. Number of rows stays the same!
 
 #### Value
 
 A data frame where divided variables have sort of “diagonalized” structure
-Author(s)
+
+#### Author(s)
 Gregor Gorjanc
-See Also
+
+#### See Also
 reshape in the stats package, melt and cast in the reshape package
