@@ -1,12 +1,27 @@
+  
+---
+title: "``DataVisualizations::ClassPDEplotMaxLikeli ``"
+output: html_document
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(DataVisualizations)
+```
 
 ClassPDEplotMaxLikeli Create PDE plot for all classes with maximum likelihood
 #### Description
 PDEplot the data for allclasses, weight the Plot with 1 (= maximum likelihood)
 #### Usage
+<pre><code>
 ClassPDEplotMaxLikeli(Data, Cls, ColorSequence = DataVisualizations::DefaultColorSequence,
 ClassNames, PlotLegend = TRUE, MinAnzKernels = 0,PlotNorm,
 main = "Pareto Density Estimation (PDE)",
 xlab = "Data", ylab = "ParetoDensity", xlim, ylim, ...)
+</code></pre>
+
 #### Arguments
 Data The Data to be plotted
 Cls Vector of class identifiers. Can be integers or NaN’s, need not be consecutive
@@ -24,7 +39,16 @@ ylab Optional: title of the y axis
 xlim Optional: area of the x-axis to be plotted
 ylim Optional: area of the y-axis to be plotted
 ... further #### Arguments passed to plot
-Value
+
+
+#### Examples
+data(ITS)
+model=AdaptGauss::AdaptGauss(ITS)
+Classification=AdaptGauss::ClassifyByDecisionBoundaries(ITS,
+DecisionBoundaries = AdaptGauss::BayesDecisionBoundaries(model$Means,model$SDs,model$Weights))
+DataVisualizations::ClassPDEplotMaxLikeli(ITS,Classification)$ggobject
+
+#### Value
 Kernels Kernels of the distributions
 ClassParetoDensities
 Pareto densities for classes
@@ -35,10 +59,3 @@ References
 Aubert, A. H., Thrun, M. C., Breuer, L., & Ultsch, A. : Knowledge discovery from high-frequency
 stream nitrate concentrations: hydrology and biology contributions, Scientific reports, Nature, Vol.
 6(31536), pp. doi 10.1038/srep31536, 2016.
-Examples
-data(ITS)
-model=AdaptGauss::AdaptGauss(ITS)
-Classification=AdaptGauss::ClassifyByDecisionBoundaries(ITS,
-DecisionBoundaries = AdaptGauss::BayesDecisionBoundaries(model$Means,model$SDs,model$Weights))
-DataVisualizations::ClassPDEplotMaxLikeli(ITS,Classification)$ggobject
-Classplot 17
