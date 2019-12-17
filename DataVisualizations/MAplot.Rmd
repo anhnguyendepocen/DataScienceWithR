@@ -1,9 +1,25 @@
-MAplot Minus versus Add plot
+---
+title: "``DataVisualizations::MAplot``"
+output: html_document
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(DataVisualizations)
+```
+
 #### Description
+
 Bland-Altman plot [Altman/Bland, 1983].
+
 #### Usage
+<pre><code>
 MAplot(x,y,islog=TRUE,densityplot=FALSE,
 main='MA-plot',xlab,ylab,Cls)
+</code></pre>
+
 #### Arguments
 x [1:n] numerical vector of a feature/variable
 y [1:n] another numerical vector of a feature/variable
@@ -23,8 +39,7 @@ MAlist=MAplot(ITS,MTY)
 ```
 
 Details
-Bland-Altman plot [Altman/Bland, 1983] for visual representation of genomic data or in order to
-decorrelate data.
+Bland-Altman plot [Altman/Bland, 1983] for visual representation of genomic data or in order to decorrelate data.
 
 #### Value
 
@@ -37,10 +52,9 @@ Michael Thrun
 
 #### References
 
-[Altman/Bland, 1983] Altman D.G., Bland J.M.: Measurement in medicine: the analysis of method
+* [Altman/Bland, 1983] Altman D.G., Bland J.M.: Measurement in medicine: the analysis of method
 comparison studies, The Statistician, Vol. 32, p. 307-317, doi:10.2307/2987937, 1983.
-[Ultsch, 2005] Ultsch, A.: Pareto Density Estimation: A Density Estimation for Knowledge Discovery,
-Baier D.,Wernecke K.D. (Eds), In Innovations in Classification, Data Science, and Information
-Systems - Proceedings 27th Annual Conference of the German Classification Society (GfKL) 2003,
+* [Ultsch, 2005] Ultsch, A.: Pareto Density Estimation: A Density Estimation for Knowledge Discovery,
+Baier D.,Wernecke K.D. (Eds), In Innovations in Classification, Data Science, and Information Systems - Proceedings 27th Annual Conference of the German Classification Society (GfKL) 2003,
 Berlin, Heidelberg, Springer, pp, 91-100, 2005.
 
